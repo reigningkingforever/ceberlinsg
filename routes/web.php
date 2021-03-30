@@ -31,7 +31,7 @@ Route::view('/', 'frontend.home');
                                                 
 
 Auth::routes();
-Route::group(['prefix'=> 'admin','as'=>'admin.','middleware'=> 'auth'],function(){
+Route::group(['prefix'=> 'admin','as'=>'admin.'],function(){
     Route::get('dashboard', 'HomeController@index')->name('home');
     Route::get('events','ProgramController@index')->name('event.list');
     Route::get('posts','PostController@index')->name('post.list');
