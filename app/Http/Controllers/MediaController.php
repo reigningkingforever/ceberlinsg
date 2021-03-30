@@ -13,7 +13,7 @@ class MediaController extends Controller
      */
     public function index()
     {
-        //
+        return view('frontend.gallery');
     }
 
     /**
@@ -21,9 +21,13 @@ class MediaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function list()
+    {
+        return view('backend.gallery.list');
+    }
     public function create()
     {
-        //
+        return view('backend.gallery.create');
     }
 
     /**

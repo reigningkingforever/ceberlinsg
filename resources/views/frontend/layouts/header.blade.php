@@ -35,10 +35,10 @@
                                                     <a href="#">Events</a>
                                                     <ul class="sub-menu">
                                                         <li id="menu-item-107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107">
-                                                            <a href="#">Upcoming Services</a>
+                                                            <a href="{{route('services')}}">Upcoming Services</a>
                                                         </li>
                                                         <li id="menu-item-108" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-108">
-                                                            <a href="#">Upcoming Birthdays</a>
+                                                            <a href="{{route('birthdays')}}">Upcoming Birthdays</a>
                                                         </li>
                                                         
                                                     </ul>
@@ -47,13 +47,13 @@
                                                     <a href="#">Articles</a>
                                                     <ul class="sub-menu">
                                                         <li id="menu-item-107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107">
-                                                            <a href="#">Sermons</a>
+                                                            <a href="{{route('services')}}">Sermons</a>
                                                         </li>
                                                         <li id="menu-item-108" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-108">
-                                                            <a href="#">Prayer of Salvation</a>
+                                                            <a href="{{route('salvation')}}">Prayer of Salvation</a>
                                                         </li> 
                                                         <li id="menu-item-108" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-108">
-                                                            <a href="#">Share Testimony</a>
+                                                            <a href="{{route('testimonies')}}">Share Testimony</a>
                                                         </li>  
                                                     </ul>
                                                 </li>
@@ -61,25 +61,25 @@
                                                     <a href="#">Church Activities</a>
                                                     <ul class="sub-menu">
                                                         <li id="menu-item-107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107">
-                                                            <a href="#">Find a Cell</a>
+                                                            <a href="{{route('cell')}}">Find a Cell</a>
                                                         </li>
                                                         <li id="menu-item-108" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-108">
-                                                            <a href="#">Enrol in Foundation School</a>
+                                                            <a href="{{route('foundation.school')}}">Enrol in Foundation School</a>
                                                         </li>
                                                         <li id="menu-item-108" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-108">
-                                                            <a href="#">Get Baptised</a>
+                                                            <a href="{{route('baptism')}}">Get Baptised</a>
                                                         </li>
                                                         <li id="menu-item-108" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-108">
-                                                            <a href="#">Give Seed/Partnership</a>
+                                                            <a href="{{route('givings')}}">Give Seed/Partnership</a>
                                                         </li> 
                                                         
                                                         
                                                     </ul>
                                                 </li>
                                                 <li id="menu-item-22" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22">
-                                                    <a href="#">Gallery</a></li>
+                                                    <a href="{{route('gallery')}}">Gallery</a></li>
                                                 <li id="menu-item-22" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22">
-                                                    <a href="#">Contact</a></li>
+                                                    <a href="{{route('contact')}}">Contact</a></li>
                                                 
                                             </ul>
                                         </div>                                                
@@ -108,7 +108,7 @@
                             <div class="text-content">
                                 Taking the divine presence of God to the nations of the world                                    </div>
                                 
-                            <div class="btn-holder"><a href="#" class="button">JOIN LIVE SERVICE</a></div>
+                            <div class="btn-holder"><a href="{{route('live')}}" class="button">JOIN LIVE SERVICE</a></div>
                         </div>
                     </div>
                 </div>

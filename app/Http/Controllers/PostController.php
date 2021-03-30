@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -13,9 +14,13 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return view('frontend.sermons');
     }
 
+    public function list()
+    {
+        return view('backend.posts.list');
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -23,7 +28,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.posts.create');
     }
 
     /**
@@ -43,9 +48,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        //
+        return view('frontend.article');
     }
 
     /**
@@ -56,7 +61,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('backend.posts.edit');
     }
 
     /**

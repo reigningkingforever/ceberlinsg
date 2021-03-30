@@ -11,7 +11,17 @@ class ProgramController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    
+    public function birthdays()
+    {
+        return view('frontend.birthdays');
+    }
+    public function services()
+    {
+        return view('frontend.services');
+    }
+
+    public function list()
     {
         return view('backend.events.list');
     }
@@ -23,7 +33,7 @@ class ProgramController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.events.create');
     }
 
     /**

@@ -13,17 +13,18 @@ class TestimonyController extends Controller
      */
     public function index()
     {
-        //
+        return view('frontend.testimonies');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+
+    public function show(Testimony $testimony)
     {
-        //
+        return view('frontend.testimony');
+    }
+    
+    public function list()
+    {
+        return view('backend.testimonies');
     }
 
     /**
@@ -43,10 +44,7 @@ class TestimonyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+    
 
     /**
      * Show the form for editing the specified resource.
