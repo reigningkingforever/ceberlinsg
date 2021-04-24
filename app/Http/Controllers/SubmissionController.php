@@ -2,83 +2,54 @@
 
 namespace App\Http\Controllers;
 
+use App\Submission;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Traits\MediaManagementTrait;
 
 class SubmissionController extends Controller
 {
+    
+    use MediaManagementTrait;
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Frontend
      */
-    public function list()
+    
+    public function foundationschool()
     {
-        return view('backend.submissions');
+        return view('frontend.foundationschool');
+    }
+    public function baptism()
+    {
+        return view('frontend.baptism');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Backend
      */
-    public function show($id)
+    public function list()
     {
-        //
+        $submissions = Submission::orderBy('status','asc')->orderBy('created_at','DESC')->get();
+        return view('backend.submissions',compact('submissions'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function seen(Submission $submission)
     {
-        //
+        $submission->status = true;
+        $submission->save();
+        return redirect()->back();
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function destroy(Submission $submission)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        Storage::delete('public/'.$submission->media->format.'s/'.$submission->media->name);
+        $submission->media->delete();
+        $submission->delete();
+        return redirect()->route('admin.submission.list');
     }
 }

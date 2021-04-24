@@ -63,7 +63,8 @@
 
 					<nav class="navigation post-navigation" role="navigation" aria-label="Posts">
 						<h2 class="screen-reader-text">Post navigation</h2>
-							<div class="nav-links"><div class="nav-previous">
+							<div class="nav-links">
+								<div class="nav-previous">
 								<a href="https://demo.evisionthemes.com/chrimbo/2017/12/08/welcome-to-chrimbo-theme/" rel="prev">Join Last Year Party</a>
 							</div>
 						</div>

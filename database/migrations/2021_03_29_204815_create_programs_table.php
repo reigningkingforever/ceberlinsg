@@ -16,14 +16,13 @@ class CreateProgramsTable extends Migration
         Schema::create('programs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->string('type');
             $table->string('name');
             $table->string('slug');
             $table->string('description');
+            $table->string('mode');
+            $table->string('streaming');
             $table->string('venue');
-            $table->string('image');
-            $table->timestamp('starts');
-            $table->timestamp('ends');
+            $table->timestamp('event_date');
             $table->timestamps();
         });
     }

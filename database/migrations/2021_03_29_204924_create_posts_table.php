@@ -22,7 +22,6 @@ class CreatePostsTable extends Migration
             $table->string('tags');
             $table->boolean('status')->default(0);
             $table->integer('views')->default(0);
-            $table->SoftDeletes();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

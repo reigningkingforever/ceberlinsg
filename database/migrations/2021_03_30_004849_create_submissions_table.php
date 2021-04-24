@@ -18,7 +18,10 @@ class CreateSubmissionsTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone');
-            $table->string('purpose');
+            $table->integer('birthday_month')->nullable();
+            $table->integer('birthday_date')->nullable();
+            $table->string('type');
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

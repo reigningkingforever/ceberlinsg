@@ -10,13 +10,13 @@
             <ul class="nav navbar-nav mr-auto">
                 <li class="nav-item">
                     <a href="#" class="nav-link" data-toggle="dropdown">
-                        <i class="nc-icon nc-palette"></i>
+                        {{-- <i class="nc-icon nc-palette"></i> --}}
                         <span class="d-lg-none">Dashboard</span>
                     </a>
                 </li>
                 <li class="dropdown nav-item">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                        <i class="nc-icon nc-planet"></i>
+                        <i class="nc-icon nc-bell-55"></i>
                         <span class="notification">5</span>
                         <span class="d-lg-none">Notification</span>
                     </a>
@@ -38,26 +38,29 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="#pablo">
-                        <span class="no-icon">Account</span>
+                        <span class="no-icon">Welcome {{Auth::user()->name}}</span>
                     </a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="no-icon">Dropdown</span>
+                        <span class="no-icon">Settings</span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="#">Admin Users</a>
+                        <a class="dropdown-item" href="#">Message Templates</a>
+                        <a class="dropdown-item" href="#">SMS Credits</a>
+                        {{-- <a class="dropdown-item" href="#"></a> --}}
                         <div class="divider"></div>
-                        <a class="dropdown-item" href="#">Separated link</a>
+                        <a class="dropdown-item" href="#">Password Reset</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#pablo">
+                    <a class="nav-link" style="cursor: pointer;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <span class="no-icon">Log out</span>
                     </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </li>
             </ul>
         </div>

@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Giving;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Traits\MediaManagementTrait;
 
 class GivingController extends Controller
 {
+    use MediaManagementTrait;
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Frontend
      */
     public function index()
     {
@@ -17,43 +19,32 @@ class GivingController extends Controller
         return view('frontend.giving');
     }
 
-    public function list()
-    {
-        //show backend givings page
-        return view('backend.giving');
-    }
-
-    
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Backend
      */
-    public function show($id)
+    public function list()
     {
-        //
+        $givings = Giving::orderBy('status','asc')->orderBy('created_at','DESC')->get();
+        return view('backend.giving',compact('givings'));
     }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+
+    public function seen(Giving $giving)
     {
-        //
+        $giving->status = true;
+        $giving->save();
+        return redirect()->back();
+    }
+
+    public function destroy(Giving $giving)
+    {
+        Storage::delete('public/'.$giving->media->format.'s/'.$giving->media->name);
+        $giving->media->delete();
+        $giving->delete();
+        return redirect()->route('admin.giving.list');
     }
 }

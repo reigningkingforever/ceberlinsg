@@ -17,13 +17,13 @@
                     <p>Dashboard</p>
                 </a>
             </li>
+            
             <li>
                 <a class="nav-link" href="{{route('admin.event.list')}}">
                     <i class="nc-icon nc-paper-2"></i>
                     <p>Events</p>
                 </a>
             </li>
-            
             <li>
                 <a class="nav-link" href="{{route('admin.post.list')}}">
                     <i class="nc-icon nc-notes"></i>
@@ -32,7 +32,7 @@
             </li>
             
             <li>
-                <a class="nav-link" href="{{'admin.testimony.list'}}">
+                <a class="nav-link" href="{{route('admin.testimony.list')}}">
                     <i class="nc-icon nc-atom"></i>
                     <p>Testimonies</p>
                 </a>
@@ -56,9 +56,9 @@
                 </a>
             </li>
             <li class="nav-item active active-pro">
-                <a class="nav-link active" href="{{route('admin.subscriber.list')}}">
-                    <i class="nc-icon nc-album-2"></i>
-                    <p>Subscribers</p>
+                <a class="nav-link active" href="{{route('admin.messaging.list')}}">
+                    <i class="nc-icon nc-notification-70"></i>
+                    <p>Broadcast</p>
                 </a>
             </li>
         </ul>

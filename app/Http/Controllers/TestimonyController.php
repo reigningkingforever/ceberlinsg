@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Testimony;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Traits\MediaManagementTrait;
 
 class TestimonyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    use MediaManagementTrait;
+    
     public function index()
     {
         return view('frontend.testimonies');
@@ -21,62 +21,41 @@ class TestimonyController extends Controller
     {
         return view('frontend.testimony');
     }
-    
-    public function list()
-    {
-        return view('backend.testimonies');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function list()
     {
-        //
+        $testimonies = Testimony::all();
+        return view('backend.testimonies',compact('testimonies'));
+    }
+    
+    public function status(Testimony $testimony)
+    {
+        if($testimony->status) $testimony->status = false;
+        else $testimony->status = true;
+        $testimony->save();
+        return redirect()->route('admin.testimony.list');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Testimony $testimony,Request $request)
     {
-        //
+        $testimony->title = $request->title;
+        $testimony->body = $request->body;
+        $testimony->save();
+        return redirect()->route('admin.testimony.list');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy(Testimony $testimony)
     {
-        //
+        foreach($testimony->media as $media){
+            Storage::delete('public/'.$media->format.'s/'.$media->name);
+            $media->delete();
+        }
+        $testimony->delete();
+        return redirect()->route('admin.testimony.list');
     }
 }

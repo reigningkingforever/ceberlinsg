@@ -17,6 +17,7 @@
      <link href="{{asset('backend/css/light-bootstrap-dashboard.css?v=2.0.0')}}" rel="stylesheet" />
      <!-- CSS Just for demo purpose, don't include it in your project -->
      <link href="{{asset('backend/css/demo.css')}}" rel="stylesheet" />
+     @stack('styles')
  </head>
  
  <body>
@@ -116,8 +117,12 @@
  <script src="{{asset('backend/js/core/bootstrap.min.js')}}" type="text/javascript"></script>
  <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
  <script src="{{asset('backend/js/plugins/bootstrap-switch.js')}}"></script>
- <!--  Google Maps Plugin    -->
- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+ <!--  Plugin for Date Time Picker and Full Calendar Plugin-->
+ <script src="{{asset('backend/js/plugins/moment.min.js')}}"></script>
+<!--  DatetimePicker   -->
+<script src="{{asset('backend/js/plugins/bootstrap-datetimepicker.js')}}"></script>
+<!--  Full Calendar   -->
+<script src="{{asset('backend/js/plugins/fullcalendar.min.js')}}"></script>
  <!--  Chartist Plugin  -->
  <script src="{{asset('backend/js/plugins/chartist.min.js')}}"></script>
  <!--  Notifications Plugin    -->
@@ -126,15 +131,7 @@
  <script src="{{asset('backend/js/light-bootstrap-dashboard.js?v=2.0.0')}}" type="text/javascript"></script>
  <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
  <script src="{{asset('backend/js/demo.js')}}"></script>
- <script type="text/javascript">
-     $(document).ready(function() {
-         // Javascript method's body can be found in assets/js/demos.js
-         demo.initDashboardPageCharts();
- 
-         demo.showNotification();
- 
-     });
- </script>
- 
+ @stack('scripts')
+
  </html>
  
