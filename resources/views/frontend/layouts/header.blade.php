@@ -47,7 +47,7 @@
                                                     <a href="#">Articles</a>
                                                     <ul class="sub-menu">
                                                         <li id="menu-item-107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107">
-                                                            <a href="{{route('services')}}">Sermons</a>
+                                                            <a href="{{route('sermons')}}">Sermons</a>
                                                         </li>
                                                         <li id="menu-item-108" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-108">
                                                             <a href="{{route('salvation')}}">Prayer of Salvation</a>

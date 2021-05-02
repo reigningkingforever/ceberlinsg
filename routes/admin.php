@@ -1,6 +1,6 @@
 <?php
-Route::group(['prefix'=> 'admin','as'=>'admin.'],function(){
-    Route::get('dashboard', 'HomeController@index')->name('home');
+Route::group(['prefix'=> 'admin','as'=>'admin.','middleware'=> 'auth'],function(){
+    Route::get('dashboard', 'HomeController@backend')->name('home');
 
     Route::get('events/services','ProgramController@list')->name('event.list');
     Route::get('events/create','ProgramController@create')->name('event.create');

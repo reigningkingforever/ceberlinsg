@@ -11,9 +11,7 @@
 |
 */
 
-Route::view('/', 'frontend.home');
-
-// Route::get('events','frontend.post');
+Route::get('/', 'HomeController@frontend');
 
 // Upcoming Services
 // Upcoming Birthdays
@@ -33,8 +31,8 @@ Route::get('services','ProgramController@services')->name('services');
 Route::get('services/{program}','ProgramController@show')->name('services.show');
 Route::get('birthdays','ProgramController@birthdays')->name('birthdays');
 
-Route::get('sermons','PostController@sermons')->name('sermons');
-Route::get('sermons/{post}','PostController@article')->name('article');
+Route::get('sermons','PostController@index')->name('sermons');
+Route::get('sermons/{post}','PostController@show')->name('article');
 
 Route::get('testimonies','TestimonyController@index')->name('testimonies');
 Route::get('testimonies/{testimony}','TestimonyController@show')->name('testimonies.show');

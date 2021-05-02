@@ -14,8 +14,7 @@ Activities
     Giving
     Prayer of Salvation
 
-Gallery..
-
+Gallery..{add share event/add to calendar/view location/get direction/get picked up/ lets know you're coming}
 
 Broadcast (Email/Sms)
 Download CSV, PDF,
@@ -24,9 +23,13 @@ Print
 
 submissions: baptism, foundation school, subscriptions, 
 
+VIEWS
 
+Birthday list - 
+comments
+invite someone
+add date to calendar
+attend event
+breadcrumb
 
-
-
-
-
+show previous comments in gallery,post,

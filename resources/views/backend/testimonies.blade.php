@@ -57,7 +57,7 @@
                                                 
                                             </td>
                                             <td>
-                                                <span class="d-block">{{$testimony->created_at->format('d M,Y')}}</span>
+                                                <span class="d-block">{{$testimony->created_at->format('F d,Y')}}</span>
                                             </td>
                                             <td>
                                                 <div class="btn-group-vertical">

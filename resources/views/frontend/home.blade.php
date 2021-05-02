@@ -7,17 +7,17 @@
         <div class="left-div what-section">
         <i class="fa fa-question-circle-o"></i>
             <h2>Upcoming Event</h2>
-            <p>Easter Sunday</p>
+            <p>{{$program->name}}</p>
         </div>
         <div class="left-div where-section">
             <i class="fa fa fa-map-marker"></i>
             <h2>Location</h2>
-            <p>Aachen, Germany</p>                        
+            <p>{{$program->city.' '.$program->state}}</p>                        
         </div>
         <div class="left-div when-section">
             <i class="fa fa fa-calendar"></i>
             <h2>Event Date</h2>
-            <p>4 Apr, 2021</p>
+            <p>{{$program->event_date->format('d F, Y')}}</p>
         </div>
     </div>
 </section> 
@@ -44,48 +44,31 @@
         <h2>Pastor's Notes</h2>
     </div>
     <div class="carousel-group">
-        <div class="carousel-item singlethumb pad0lr">
-            <a href="https://demo.evisionthemes.com/chrimbo/about-christmas/">
-
-                <div class="thumb-holder">
-                    <img class="desaturate" src="https://demo.evisionthemes.com/chrimbo/wp-content/uploads/2017/12/child-577012_1280-340x231.jpg">
-                </div>
-                <div class="content-area">
-                    <h2>about easter</h2>
-                    <span class="divider"></span>
-                    <div class="content-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at risus at lacus laoreet mollis sed id elit. Integer bibendum lobortis velit, eleifend commodo dui facilisis nec. Aliquam mi sapien, ultrices a ultrices non, sodales ut diam. Aliquam mi sapien,...                                        </div>
-                </div>
-            </a>
-        </div>
-        <div class="carousel-item singlethumb pad0lr">
-            <a href="https://demo.evisionthemes.com/chrimbo/christmas-events/">
-
-                <div class="thumb-holder">
-                    <img class="desaturate" src="https://demo.evisionthemes.com/chrimbo/wp-content/uploads/2017/12/christmas-3000057_1280.jpg">
-                </div>
-                <div class="content-area">
-                    <h2>Jesus is Coming Soon</h2>
-                    <span class="divider"></span>
-                    <div class="content-text">
-                        creatures from Alpine folklore – parade through the city wearing carved masks and extravagant fur costumes. St. Nicholas brings small gifts before Christmas and traditional Austrian “Turmbläser” (brass bands that play in the towers) and choirs add...                                        </div>
-                </div>
-            </a>
-        </div>
-        <div class="carousel-item singlethumb pad0lr">
-            <a href="https://demo.evisionthemes.com/chrimbo/live-music-special-day/">
-
-                <div class="thumb-holder">
-                    <img class="desaturate" src="https://demo.evisionthemes.com/chrimbo/wp-content/uploads/2017/12/new-years-eve-1905144_1280.jpg">
-                </div>
-                <div class="content-area">
-                    <h2>Spiritual Warfare &#8211; In Christ </h2>
-                    <span class="divider"></span>
-                    <div class="content-text">
-                        Aliquam mi sapien, ultrices a ultrices non, sodales ut diam. Fusce semper risus eu magna placerat pulvinar. Nullam ac odio non ligula semper auctor. Fusce semper risus eu magna placerat pulvinar. Aliquam mi sapien, ultrices a ultrices non, sodales ut...                                        </div>
-                </div>
-            </a>
-        </div>
+        @forelse ($posts as $post)
+            <div class="carousel-item singlethumb pad0lr">
+                <a href="{{route('article',$post)}}">
+                    <div class="thumb-holder">
+                        {{-- <img class="desaturate" src="{{asset('frontend/img/christmas-3000057_1280.jpg')}}"> --}}
+                        @if(!$post->media->first())
+                            <img src="{{asset('backend/img/1.jpg')}}" class="desaturate" style="max-height: 300px;">
+                        @elseif($post->media->first()->format == "image")
+                            <img @if($post->media->first()->external) src="{{$post->media->first()->name}}" @else src="{{asset('storage/images/'.$post->media->first()->name)}}" @endif class="desaturate" style="max-height: 300px;">
+                        @else
+                            <img src="{{asset('storage/videos/events-1.jpg')}}" class="avatar rounded" style="max-height: 300px;">
+                        @endif
+                    </div>
+                    <div class="content-area">
+                        <h2>{{$post->title}}</h2>
+                        <span class="divider"></span>
+                        <div class="content-text">
+                            {{Illuminate\Support\Str::words($post->body,50, '...')}}                                        
+                        </div>
+                    </div>
+                </a>
+            </div>
+        @empty
+          <div class="text-center">No Sermon</div>  
+        @endforelse
     </div>
 </section>
                     

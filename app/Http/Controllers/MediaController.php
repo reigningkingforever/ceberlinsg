@@ -14,7 +14,8 @@ class MediaController extends Controller
     /** frontend  */
     public function index()
     {
-        return view('frontend.gallery');
+        $galleries = Gallery::orderBy('created_at','desc')->get();
+        return view('frontend.gallery',compact('galleries'));
     }
 
     /** backend */

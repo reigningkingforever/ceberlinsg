@@ -64,7 +64,7 @@
                                                     </label>
                                                 </div>
                                             </td>
-                                            <td>{{$giving->created_at->format('M d, Y')}}</td>
+                                            <td>{{$giving->created_at->format('F d, Y')}}</td>
                                             <td>{{$giving->name}}</td>
                                             <td>{{$giving->email}}</td>
                                             <td>{{$giving->phone}}</td>

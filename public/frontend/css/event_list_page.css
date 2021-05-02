@@ -1,0 +1,117 @@
+.search-bar {
+    background: #fff;
+    padding: 1em;
+    width: 100%;
+    border-radius: 10em;
+    transition: box-shadow 300ms ease;
+}
+.search-bar input {
+    width: 100%;
+    border-style: none;
+    color: inherit;
+    background-color: transparent;
+    padding-left: 1em;
+    font-size: 1.3em;
+}
+
+.elevation-3 {
+    box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%), 0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%) !important;
+}
+
+.event-card-list {
+    margin-top: 4em;
+    /* padding-inline-start: unset !important; */
+}
+
+.event-card-list li {
+    list-style: none;
+    margin: 2em 0;
+}
+
+.event-card {
+    overflow: hidden;
+    /* width: 630px; */
+    border-radius: 0.3em;
+}
+.v-card {
+    display: block;
+    border-radius: 2px;
+    min-width: 0;
+    position: relative;
+    text-decoration: none;
+    box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+}
+.event-card img {
+    width: 240px;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+.event-card .date-ribbon {
+    position: absolute;
+    top: 0;
+    left: 2em;
+    background: #FE453E;
+    color: #fff;
+    padding: 0.2em 1em;
+    padding-bottom: 0;
+    border-radius: 0;
+}
+.event-card .date-ribbon::before {
+    left: 0;
+    border-left: solid 2em #FE453E;
+    border-top: solid 15px #FE453E;
+    border-bottom: solid 15px transparent;
+    border-right: solid 2em transparent;
+}
+
+.event-card .date-ribbon::before, .event-card .date-ribbon::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    width: 50%;
+    height: 30px;
+}
+
+.event-card .date-ribbon::after {
+    right: 0;
+    border-right: solid 2em #FE453E;
+    border-top: solid 15px #FE453E;
+    border-bottom: solid 15px transparent;
+    border-left: solid 2em transparent;
+}
+
+.event-card .date-ribbon h2 {
+    font-weight: 500;
+    font-size: 1.15em;
+    letter-spacing: 0.07em;
+    text-align: center;
+}
+
+.event-card .date-ribbon h1 {
+    text-align: center;
+    font-weight: 400;
+    font-size: 2.45em;
+    margin-top: -0.09em;
+    line-height: 1em;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #0062cc;
+    background-color: transparent;
+    border-color: transparent transparent #f3f3f3;
+    border-bottom: 3px solid !important;
+    font-size: 16px;
+    font-weight: bold;
+}
+.nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    color: #0062cc;
+    font-size: 16px;
+    font-weight: 600;
+}
+.nav-link:hover {
+    border: none;
+}

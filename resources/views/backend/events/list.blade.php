@@ -51,7 +51,7 @@
                                             <h5>{{$program->description}}</h5>
                                         </td>
                                         <td class="w-30">
-                                            <span class="d-block">{{$program->event_date->format('D d M')}}</span>
+                                            <span class="d-block">{{$program->event_date->format('l d F')}}</span>
                                             <span>{{$program->event_date->format('h:i A')}}</span>
                                         </td>
                                         <td>

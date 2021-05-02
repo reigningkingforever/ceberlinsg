@@ -155,20 +155,3 @@
 @endsection
 		
 		
-<!--End of Tawk.to Script (0.3.3)-->
-{{-- <script type='text/javascript' id='contact-form-7-js-extra'>
- /* <![CDATA[ */
-	var wpcf7 = {"apiSettings":{"root":"https:\/\/demo.evisionthemes.com\/chrimbo\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"},"recaptcha":{"messages":{"empty":"Please verify that you are not a robot."}}};
- /* ]]> */
-</script>
-
-<script type='text/javascript' src='https://demo.evisionthemes.com/chrimbo/wp-content/themes/chrimbo/assets/frameworks/jquery.easing/jquery.easing.js?ver=0.3.6' id='easing-js-js'></script>
-<script type='text/javascript' src='https://demo.evisionthemes.com/chrimbo/wp-content/themes/chrimbo/assets/frameworks/wow/js/wow.min.js?ver=1.1.2' id='wow-js'></script>
-<script type='text/javascript' src='https://demo.evisionthemes.com/chrimbo/wp-content/themes/chrimbo/assets/frameworks/slick/slick.min.js?ver=1.6.0' id='slick-js'></script>
-<script type='text/javascript' src='https://demo.evisionthemes.com/chrimbo/wp-content/themes/chrimbo/assets/frameworks/waypoints/jquery.waypoints.min.js?ver=4.0.0' id='waypoints-js'></script>
-<script type='text/javascript' src='https://demo.evisionthemes.com/chrimbo/wp-content/themes/chrimbo/assets/js/evision-custom.js?ver=1.0.1' id='evision-custom-js'></script>
-<script type='text/javascript' src='https://demo.evisionthemes.com/chrimbo/wp-content/themes/chrimbo/assets/js/skip-link-focus-fix.js?ver=20130115' id='skip-link-focus-fix-js'></script>
-<script type='text/javascript' src='https://demo.evisionthemes.com/chrimbo/wp-includes/js/comment-reply.min.js?ver=5.7' id='comment-reply-js'></script>
-
-</body>
-</html> --}}

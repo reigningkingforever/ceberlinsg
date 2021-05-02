@@ -1,0 +1,62 @@
+#scholership-promo,#slider-area .single-slide-wrap,.gallery-gird .col-lg-3 .single-gallery-item{background-size:cover;background-position:center center;background-repeat:no-repeat}
+#responsibility-area .single-responsibility,.gallery-menu span{-webkit-transition:all .2s ease-out;-moz-transition:all .2s ease-out;-o-transition:all .2s ease-out}
+#gallery-area,#responsibility-area{background-color:#ecf1f5}
+.gallery-menu a,.gallery-menu span{display:inline-block;padding:15px 35px;font-weight:500;text-transform:capitalize;cursor:pointer}
+.single-job-opportunity:hover{box-shadow:0 8px 14px 0 rgba(0,0,0,.15)}
+#page-content-wrap .people-to-say .single-testimonial-wrap:hover,.single-blog-post:hover{-webkit-box-shadow:0 8px 14px 0 rgba(0,0,0,.15);-moz-box-shadow:0 8px 14px 0 rgba(0,0,0,.15)}
+.gallery-menu{margin-bottom:90px}
+.gallery-menu span{background-color:#dbe5f3;color:#131c33;transition:all .2s ease-out;margin-right:25px}
+.gallery-menu span.active,.gallery-menu span:hover{background-color:#3b60c9;color:#fff}
+.gallery-menu span:last-child{margin-right:0}
+.gallery-menu a{background-color:#dbe5f3;color:#131c33;-webkit-transition:all .2s ease-out;-moz-transition:all .2s ease-out;-o-transition:all .2s ease-out;transition:all .2s ease-out;margin-right:25px}
+.gallery-menu a.active,.gallery-menu a:hover{background-color:#3b60c9;color:#fff}
+.gallery-menu a:last-child{margin-right:0}
+.gallery-gird .col-lg-3 .single-gallery-item,.single-job-opportunity .job-opportunity-text h3 a{-webkit-transition:all .4s ease-out;-moz-transition:all .4s ease-out;-o-transition:all .4s ease-out}
+.event-page-content-wrap .all-event-list,.gallery-gird{margin-top:-30px}
+.gallery-gird .col-lg-3 .single-gallery-item{margin-top:30px;height:250px;position:relative;transition:all .4s ease-out;overflow:hidden}
+.gallery-gird .col-lg-3 .single-gallery-item .gallery-hvr-wrap,.gallery-gird .col-lg-3 .single-gallery-item .gallery-hvr-wrap .gallery-hvr-text{opacity:0;-webkit-transition:all .4s ease-out;-moz-transition:all .4s ease-out;-o-transition:all .4s ease-out;position:absolute;visibility:hidden}
+.gallery-gird .col-lg-3 .single-gallery-item img{max-height:315px;min-width:100%}
+.gallery-gird .col-lg-3 .single-gallery-item .gallery-hvr-wrap{background-color:#3b60c9;width:100%;height:100%;top:0;left:0;color:#fff;transition:all .4s ease-out}
+.gallery-gird .col-lg-3 .single-gallery-item .gallery-hvr-wrap .gallery-hvr-text{left:25px;bottom:-55px;transition:all .4s ease-out}
+.gallery-gird .col-lg-3 .single-gallery-item .gallery-hvr-wrap .gallery-hvr-text h4{font-size:1.0rem;line-height:2.8800000000000003rem;font-weight:700}
+.gallery-gird .col-lg-3 .single-gallery-item .gallery-hvr-wrap .gallery-hvr-text .gallery-event-date{font-size:0.9rem;font-weight:700;line-height:1}
+.gallery-gird .col-lg-3 .single-gallery-item .gallery-hvr-wrap .btn-zoom{width:70px;height:65px;position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;display:block;transform:scale(0);-webkit-transition:all .4s ease-out;-moz-transition:all .4s ease-out;-o-transition:all .4s ease-out;transition:all .4s ease-out}
+.gallery-gird .col-lg-3 .single-gallery-item .gallery-hvr-wrap .btn-zoom img{margin-top:-25px}
+.gallery-gird .col-lg-3 .single-gallery-item:hover .gallery-hvr-wrap{opacity:.9;visibility:visible}
+.gallery-gird .col-lg-3 .single-gallery-item:hover .gallery-hvr-text{opacity:1;visibility:visible;bottom:15px}
+.gallery-gird .col-lg-3 .single-gallery-item:hover .btn-zoom{transform:scale(1)}
+.gallery-gird .col-lg-3 .video .btn-video-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(1)}
+.gallery-gird .col-lg-3:nth-child(1) .single-gallery-item,.gallery-gird .col-lg-3:nth-child(4) .single-gallery-item,.gallery-gird .col-lg-3:nth-child(5) .single-gallery-item{height:315px}
+.gallery-gird .gallery-bg-1{background-image:url(../img/gallery/gellary-img-1.jpg)}
+.gallery-gird .gallery-bg-2{background-image:url(../img/gallery/gellary-img-2.jpg)}
+.gallery-gird .gallery-bg-3{background-image:url(../img/gallery/gellary-img-3.jpg)}
+.gallery-gird .gallery-bg-4{background-image:url(../img/gallery/gellary-img-4.jpg)}
+.gallery-gird .gallery-bg-5{background-image:url(../img/gallery/gellary-img-5.jpg)}
+.gallery-gird .gallery-bg-6{background-image:url(../img/gallery/gellary-img-6.jpg)}
+.gallery-gird .gallery-bg-7{background-image:url(../img/gallery/gellary-img-7.jpg)}
+.gallery-gird .gallery-bg-8{background-image:url(../img/gallery/gellary-img-8.jpg)}
+
+
+.gallery-page-wrap{background-color:#ecf1f5}
+.gallery-page-wrap .gallery-menu{border-bottom:5px solid #3b60c9}
+.gallery-page-wrap .single-album-wraper{margin-bottom:150px}
+.gallery-page-wrap .single-album-wraper .album-heading{position:relative;margin-bottom:90px}
+.gallery-page-wrap .single-album-wraper .album-heading h2{font-size:4.8rem;line-height:7.68rem;font-weight:100;display:inline-block;position:relative;margin-bottom:30px}
+.gallery-page-wrap .single-album-wraper .album-heading h2:after{background-color:#161F37;content:'';left:0;height:2px;position:absolute;width:calc(75%);bottom:0}
+.gallery-page-wrap .single-album-wraper .album-heading h2 a{color:#131c33}
+.gallery-page-wrap .single-album-wraper .album-heading a.btn-brand{text-transform:capitalize;font-weight:400;position:absolute;right:0;top:15px}
+.gallery-page-wrap .single-album-wraper .album-heading a.btn-brand:focus,.gallery-page-wrap .single-album-wraper .album-heading a.btn-brand:hover{background-color:#5481ff;color:#fff}
+
+.gallery-menu a,.gallery-menu span{padding:8px 15px;margin-right:3px;font-size:1.2rem;line-height:1.92rem}
+#funfact-area .single-funfact-wrap{margin-bottom:50px}
+#funfact-area .col-lg-3:last-child .single-funfact-wrap{margin-bottom:0}
+.gallery-menu span{margin-bottom:10px}
+#blog-area .col-lg-4:last-child .single-blog-post,.blog-page-contant-start .col-lg-6:last-child .single-blog-post,.gallery-menu a{margin-bottom:0}
+.gallery-page-wrap .single-album-wraper{margin-bottom:70px}
+.gallery-page-wrap .single-album-wraper .album-heading h2{font-size:2.6rem;line-height:4.16rem}
+.gallery-page-wrap .single-album-wraper .album-heading a.btn-brand{position:inherit}
+.gallery-menu a,.gallery-menu span{padding:10px 15px;margin-right:5px;font-size:1.4rem;line-height:2.2399999999999998rem;margin-bottom:0}
+.gallery-page-wrap .single-album-wraper .album-heading a.btn-brand{position:inherit}
+.gallery-page-wrap .single-album-wraper .album-heading a.btn-brand{position:absolute}
+.gallery-menu a,.gallery-menu span{padding:15px 35px;margin-right:25px;font-size:1.0rem;line-height:2.0rem}
+#footer-area .footer-widget .single-widget-wrap,#funfact-area .single-funfact-wrap,#responsibility-area .single-responsibility,.gallery-menu a,.gallery-menu span,.single-blog-post{margin-bottom:0}

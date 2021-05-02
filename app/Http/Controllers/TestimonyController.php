@@ -13,13 +13,14 @@ class TestimonyController extends Controller
     
     public function index()
     {
-        return view('frontend.testimonies');
+        $testimonies = Testimony::where('status',true)->orderBy('created_at','desc')->get();
+        return view('frontend.testimonies.list',compact('testimonies'));
     }
 
 
     public function show(Testimony $testimony)
     {
-        return view('frontend.testimony');
+        return view('frontend.testimonies.view',compact('testimony'));
     }
     public function store(Request $request)
     {

@@ -13,25 +13,25 @@ class ProgramController extends Controller
 {
     use MediaManagementTrait;
     
-    
-    /*Frontend    */
     public function birthdays()
     {
         return view('frontend.events.birthdays');
     }
     public function services()
     {
+        if($query = request()->query('search'))
+        $programs = Program::where('name','LIKE',"%$query%")->orWhere('description','LIKE',"%$query%")->get();
+        else
         $programs = Program::all();
         return view('frontend.events.list',compact('programs'));
     }
-    public function show(Program $program)
-    {
-        return view('frontend.events.view');
+
+    public function show(Program $program){
+        return view('frontend.events.view',compact('program'));
     }
 
     /* Backend*/
-    public function list()
-    {
+    public function list(){
         $today = Carbon::today();
         // $programs = Program::whereDate('event_date',$today->addDays(7))->get();
         $programs = Program::all();
@@ -41,20 +41,11 @@ class ProgramController extends Controller
         return view('backend.events.list',compact('programs'));  
     }
 
-    
-    public function create()
-    {
+    public function create(){
         return view('backend.events.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         // dd($request->all());
         $program = new Program;
         $program->user_id = Auth::id();
@@ -71,13 +62,11 @@ class ProgramController extends Controller
         return redirect()->route('admin.event.list');
     }
 
-    public function edit(Program $program)
-    {
+    public function edit(Program $program){
         return view('backend.events.edit',compact('program'));
     }
 
-    public function update(Program $program,Request $request)
-    {
+    public function update(Program $program,Request $request){
         $program->name = $request->name;
         $program->description = $request->description;
         $program->mode = $request->mode;
@@ -97,8 +86,8 @@ class ProgramController extends Controller
         $newProgram->save();
         return view('backend.events.edit')->with(['program'=> $newProgram]);
     }
-    public function destroy(Program $program)
-    {
+
+    public function destroy(Program $program){
         foreach($program->media as $media){
             Storage::delete('public/'.$media->format.'s/'.$media->name);
             $media->delete();

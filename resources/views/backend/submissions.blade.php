@@ -82,7 +82,7 @@
                                                         
                                                 @endswitch
                                             </td>
-                                            <td>{{$submission->created_at->format('M d, Y')}}</td>
+                                            <td>{{$submission->created_at->format('F d, Y')}}</td>
                                             <td>
                                                 <div class="d-flex">
                                                     @if(!$submission->status)

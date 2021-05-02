@@ -11,14 +11,16 @@
 		<link rel='stylesheet' id='contact-form-7-css'  href="{{asset('vendors/contact-form-7/css/styles.css?ver=4.9.2')}}" type='text/css' media='all' />
 		<link rel='stylesheet' id='wow-animate-css-css'  href='{{asset("vendors/wow/css/animate.min.css?ver=3.4.0")}}' type='text/css' media='all' />
 		<link rel='stylesheet' id='slick-css-css'  href='{{asset("vendors/slick/slick.css?ver=3.4.0")}}' type='text/css' media='all' />
-
 		<link rel='stylesheet' id='chrimbo-style-css'  href="{{asset('frontend/css/style.css?ver=5.7')}}" type='text/css' media='all' />
 		<link rel='stylesheet' id='chrimbo-google-fonts-css' href='https://fonts.googleapis.com/css?family=Oxygen%3A400%2C300%2C700%7CPlayfair%2BDisplay%3A400%2C400i%2C700%2C700i%2C900&#038;ver=5.7' type='text/css' media='all' />
 		<link rel='stylesheet'  href='{{asset("frontend/css/custom.css")}}' type='text/css' />
 		
         <link rel='stylesheet' id='wow-animate-css-css'  href='{{asset("vendors/wow/css/animate.min.css?ver=3.4.0")}}' type='text/css' media='all' />
+        <link rel='stylesheet' href='{{asset("backend/css/bootstrap.min.css")}}' type='text/css' media='all' />
         <script type='text/javascript' src="{{asset('vendors/jquery/jquery.min.js?ver=3.5.1')}}" id='jquery-core-js'></script>
 		<script type='text/javascript' src="{{asset('vendors/jquery/jquery-migrate.min.js?ver=3.3.2')}}" id='jquery-migrate-js'></script>
+		{{-- <script type='text/javascript' src="{{asset('backend/jquery/jquery-migrate.min.js?ver=3.3.2')}}" id='jquery-migrate-js'></script> --}}
+        @stack('styles')
 </head>
 
 @if(request()->is('/')) 
@@ -82,14 +84,12 @@
                                 <aside id="recent-posts-3" class="widget widget_recent_entries">
                                     <h1 class="widget-title">Testimonies</h1>
                                     <ul>
+                                        @foreach ($testimonies as $testimony)
                                         <li>
-                                            <a href="#">God saved me from Death</a>
-                                            <span class="post-date">December 8, 2017</span>
+                                            <a href="{{route('testimonies.show',$testimony)}}">{{$testimony->title}}</a>
+                                            <span class="post-date">{{$testimony->created_at->format('F d, Y')}}</span>
                                         </li>
-                                        <li>
-                                            <a href="#">Supernatural Provision</a>
-                                            <span class="post-date">December 8, 2017</span>
-                                        </li>
+                                        @endforeach
                                     </ul>
 
                                 </aside>                                    
@@ -144,6 +144,9 @@
     <!--End of Tawk.to Script (0.3.3)-->
 
     {{-- <script type='text/javascript' src='https://demo.evisionthemes.com/chrimbo/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.9.2' id='contact-form-7-js'></script> --}}
+    <script type='text/javascript' src='{{asset("backend/js/core/popper.min.js")}}'></script>
+    <script type='text/javascript' src='{{asset("backend/js/core/jquery.3.2.1.min.js")}}'></script>
+    <script type='text/javascript' src='{{asset("backend/js/core/bootstrap.min.js")}}'></script>
     <script type='text/javascript' src='{{asset("frontend/js/modernizr.min.js?ver=2.8.3' id='modernizr-js")}}'></script>
     <script type='text/javascript' src='{{asset("frontend/js/menu2016.js?ver=20120206' id='navigation-js-js")}}'></script>
     <script type='text/javascript' src='{{asset("vendors/jquery.easing/jquery.easing.js?ver=0.3.6")}}' id='easing-js-js'></script>
@@ -153,5 +156,6 @@
     <script type='text/javascript' src='{{asset("frontend/js/evision-custom.js?ver=1.0.1")}}' id='evision-custom-js'></script>
     <script type='text/javascript' src='{{asset("frontend/js/skip-link-focus-fix.js?ver=20130115")}}' id='skip-link-focus-fix-js'></script>
     {{-- <script type='text/javascript' src='{{asset("frontend/js/wp-embed.min.js?ver=5.7")}}' id='wp-embed-js'></script> --}}
+    @stack('scripts')
 </body>
 </html>

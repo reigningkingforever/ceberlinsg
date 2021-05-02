@@ -1,5 +1,5 @@
 // On Document Load
-jQuery(window).load(function(){
+jQuery(window).on("load",function(){
     //site loader
     jQuery('#wraploader').hide();
 });
