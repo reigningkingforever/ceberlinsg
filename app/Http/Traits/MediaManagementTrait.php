@@ -15,14 +15,34 @@ trait MediaManagementTrait
             request()->validate([
                 'file' => 'required',
             ]);
-            $ext = $request->file('file')->getClientOriginalExtension();
-            $format = strstr($request->file('file')->getClientMimeType(),'/',true);
-            $mediaName = rand().time().'.'.$ext;
-            // $format = explode('/',$request->file('file')->getMimeType())[0];
-            $request->file('file')->storeAs('public/'.$format.'s/',$mediaName);//save the file to public folder
-            $this->saveToDatabase($mediaName,$format,false,$mediable_id,$mediable_type);
+            $this->processUpload($request->file('file'),$mediable_id,$mediable_type);
+            // $ext = $request->file('file')->getClientOriginalExtension();
+            // $format = strstr($request->file('file')->getClientMimeType(),'/',true);
+            // $mediaName = rand().time().'.'.$ext;
+            // // $format = explode('/',$request->file('file')->getMimeType())[0];
+            // $request->file('file')->storeAs('public/'.$format.'s/',$mediaName);//save the file to public folder
+            // $this->saveToDatabase($mediaName,$format,false,$mediable_id,$mediable_type);
         }
     }
+
+    protected function multipleUpload(Request $request,$mediable_id,$mediable_type){
+        if($request->hasFile('media'))
+        {
+            foreach ($request->file('media') as $file) {
+                $this->processUpload($file,$mediable_id,$mediable_type);
+            }
+        }
+    }
+
+    protected function processUpload($file,$mediable_id,$mediable_type){
+        $ext = $file->getClientOriginalExtension();
+        $format = strstr($file->getClientMimeType(),'/',true);
+        $mediaName = rand().time().'.'.$ext;
+        $file->storeAs('public/'.$format.'s/',$mediaName);//save the file to public folder
+        $this->saveToDatabase($mediaName,$format,false,$mediable_id,$mediable_type);
+    }
+
+    
     
     protected function saveToDatabase($name,$format,$external,$mediable_id,$mediable_type){
         $media = new Media;

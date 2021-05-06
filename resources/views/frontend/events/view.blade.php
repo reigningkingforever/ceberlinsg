@@ -195,25 +195,26 @@
 			</div>	
 		</div>
 	</section>
-@endsection
-<div class="modal fade modal-primary" id="gallery-modal" tabindex="-1" role="dialog" aria-labelledby="gallery-modal" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content gallery-content">
-			<div class="modal-header justify-content-center">
+	<div class="modal fade modal-primary" id="gallery-modal" tabindex="-1" role="dialog" aria-labelledby="gallery-modal" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content gallery-content">
+				<div class="modal-header justify-content-center">
+					
+				</div>
+				<div class="modal-body text-center">
+					<div id="result">Edit Testimony</div>
+				</div>
+				
+				<div class="modal-footer text-center">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+				</div>
 				
 			</div>
-			<div class="modal-body text-center">
-				<div id="result">Edit Testimony</div>
-			</div>
-			
-			<div class="modal-footer text-center">
-				<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-			</div>
-			
 		</div>
+		
 	</div>
-	
-</div>
+@endsection
+
 @push('scripts')
 <script>
  $('.gallery-modal').click(function(){

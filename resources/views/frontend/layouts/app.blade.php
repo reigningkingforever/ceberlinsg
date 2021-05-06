@@ -28,7 +28,7 @@
 @else <body class="post-template-default single single-post postid-53 single-format-standard evision-right-sidebar">
 @endif
 
-    <div id="page" class="hfeed site">
+    <div id="page">
         <section id="wraploader" class="wraploader">
             <div id="loader" class="loader-outer">
             <svg id="wrapcircle" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="71.333px" height="12.667px" viewBox="0 0 71.333 12.667" enable-background="new 0 0 71.333 12.667" xml:space="preserve">
@@ -57,7 +57,7 @@
             </div>            
         </div>
 
-        <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+        {{-- <a class="skip-link screen-reader-text" href="#content">Skip to content</a> --}}
         
         @include('frontend.layouts.header')
 

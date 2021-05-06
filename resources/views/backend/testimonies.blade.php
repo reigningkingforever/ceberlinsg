@@ -29,7 +29,7 @@
                             <table class="table table-hover ">
                                 <thead>
                                     <th class="w-10">Media</th>
-                                    <th>Testimony</th>
+                                    <th class="w-50">Testimony</th>
                                     <th>Date</th>
                                     <th>Action</th>
                                 </thead>

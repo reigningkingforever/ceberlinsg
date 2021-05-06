@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Testimony;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Traits\MediaManagementTrait;
@@ -13,7 +14,12 @@ class TestimonyController extends Controller
     
     public function index()
     {
+        if($query = request()->query('search'))
+        $testimonies = Testimony::where('status',true)->where('title','LIKE',"%$query%")->orWhere('name','LIKE',"%$query%")->orWhere('body','LIKE',"%$query%")->orderBy('created_at','desc')->get();
+        // Program::where('name','LIKE',"%$query%")->orWhere('description','LIKE',"%$query%")->get();
+        else
         $testimonies = Testimony::where('status',true)->orderBy('created_at','desc')->get();
+        
         return view('frontend.testimonies.list',compact('testimonies'));
     }
 
@@ -24,7 +30,20 @@ class TestimonyController extends Controller
     }
     public function store(Request $request)
     {
-        //
+        $testimony = new Testimony;
+        $testimony->name = $request->name;
+        $testimony->email = $request->email;
+        $testimony->phone = $request->phone;
+        $testimony->title = $request->title?$request->title:Str::limit($testimony->body,20, '...');
+        $testimony->body = $request->body;
+        $testimony->save();
+        if($request->hasFile('file')){
+            $this->uploadMedia($request,$testimony->id,get_class($testimony));
+        }
+        if($request->hasFile('media')){
+            $this->multipleUpload($request,$testimony->id,get_class($testimony));
+        }
+        return redirect()->back();
     }
 
     

@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Traits\MediaManagementTrait;
-
-
+use Illuminate\Support\Str;
+use Illuminate\Support\Arr;
 class PostController extends Controller
 {
     use MediaManagementTrait;
@@ -18,13 +18,28 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('frontend.sermons.list');
+    {   
+        if($query = request()->query('search'))
+        $posts = Post::where('title','LIKE',"%$query%")->orWhere('body','LIKE',"%$query%")->orWhere('tags','LIKE',"%$query%")->get();
+        else
+        $posts = Post::all(); 
+        //dd($posts);
+        if($posts->pluck('tags')->isNotEmpty()){
+            $tags='';
+            foreach($posts->pluck('tags')->unique() as $tag){
+                $tags = $tags.$tag.','; 
+            }
+            $tags = Arr::where(explode(',',$tags), function ($value, $key) {
+                return filled($value);
+            });
+            return view('frontend.sermons.list',compact('posts','tags'));
+        } 
+        return view('frontend.sermons.list',compact('posts'));
     }
 
     public function show(Post $post)
     {
-        return view('frontend.sermons.view');
+        return view('frontend.sermons.view',compact('post'));
     }
     
     public function list()

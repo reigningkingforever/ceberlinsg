@@ -71,12 +71,12 @@
                                                     
                                                 </a>
                                                 
-                                                <button type="button" data-toggle="modal" data-target="#delete-event{{$event->id}}" class="btn btn-danger btn-outline rounded" rel="tooltip" title="delete event" data-placement="left">
+                                                <button type="button" data-toggle="modal" data-target="#delete-event{{$program->id}}" class="btn btn-danger btn-outline rounded" rel="tooltip" title="delete event" data-placement="left">
                                                     <span class="btn-label">
                                                         <i class="fa fa-trash"></i>
                                                     </span>
                                                 </button>
-                                                <div class="modal fade modal-mini modal-primary" id="delete-event{{$event->id}}" tabindex="-1" role="dialog" aria-labelledby="delete-event{{$event->id}}" aria-hidden="true">
+                                                <div class="modal fade modal-mini modal-primary" id="delete-event{{$program->id}}" tabindex="-1" role="dialog" aria-labelledby="delete-event{{$program->id}}" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header justify-content-center">
@@ -86,7 +86,7 @@
                                                                 <p>Are you sure you want to delete this event</p>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <form class="d-inline" action="{{route('admin.event.delete',$event)}}" method="POST">@csrf
+                                                                <form class="d-inline" action="{{route('admin.event.delete',$program)}}" method="POST">@csrf
                                                                     <button type="submit" class="btn btn-danger">Yes</button>
                                                                 </form>
                                                                 <button type="button" class="btn btn-link btn-simple" data-dismiss="modal">Close</button>
