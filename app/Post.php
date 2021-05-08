@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Media;
+use App\Comment;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 
@@ -25,5 +26,9 @@ class Post extends Model
     
     public function media(){
         return $this->morphMany(Media::class, 'mediable');
+    }
+
+    public function comments(){
+        return $this->morphMany(Comment::class, 'commentable');
     }
 }

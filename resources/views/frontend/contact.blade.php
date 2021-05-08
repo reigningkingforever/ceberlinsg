@@ -7,115 +7,97 @@
 @section('main')
 	<section class="wrapper wrap-content">
 		<div class="site-content">
-			<div class="row">
-				<div class="col-md-8">
-					<div class="card">
-						<div class="card-body">
-							<div class="accordions" id="accordion">
-								<div class="card">
-									<button data-target="#collapseOne" href="#" data-toggle="collapse" class="collapsed p-0" aria-expanded="false">
-									<div class="card-header">
-										<h6 class="card-title">Click here to let us know your giving</h6>
-									</div>
-									</button>
-									<div id="collapseOne" class="card-collapse collapse" style="">
-										<div class="card-body">
-											<form action="{{route('giving.save')}}" method="post" enctype="multipart/form-data">@csrf
-												<div class="row">
-													<div class="col-md-6">
-														<div class="form-group">
-															<label for="name">Your Name <span class="required">*</span></label> 
-															<input id="name" name="name" type="text" value="" class="form-control" maxlength="245" required='required' />
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group">
-															<label for="title">Purpose</label>
-															<select id="purpose" name="purpose" class="form-control" required>
-																<option>Tithe</option>
-																<option>Offering</option>
-																<option>First Fruit</option>
-																<option>Seed</option>
-																<option>Rhapsody of Realities Partnership</option>
-																<option>Rhapsody Bible Partnership</option>
-																<option>Healing School Partnership</option>
-																<option>Innercity Missions Partnership</option>
-																<option>Loveworld Television Ministry Partnership</option>
-																<option>Loveworld USA Partnership</option>
-																<option>Loveworld Media Partnership</option>
-																<option>Loveworld Radio Partnership</option>
-																<option>Internet Multimedia Partnership</option>
-																<option>Loveworld Publishing Partnership</option>
-															</select>
-														</div>
-													</div>
-												</div>
-												<div class="row">
-													<div class="col-md-6">
-														<div class="form-group">
-															<label for="amount">Amount <span class="required">*</span></label> 
-															<input id="amount" name="amount" type="number" placeholder="5000" class="form-control" maxlength="245" required='required' />
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group">
-															<label for="title">Currency</label>
-															<select id="currency" name="currency" class="form-control" required>
-																<option>Euro</option>
-																<option>Pounds</option>
-																<option>Dollars</option>
-																<option>Others</option>
-																
-															</select>
-														</div>
-													</div>
-												</div>
-												<div class="form-group">
-													<textarea class="form-control" name="description" cols="45" rows="8" placeholder="Details of your giving or prayer request" required="required"></textarea>
-												</div>
-												<div class="row">
-													<div class="col-md-6">
-														<div class="form-group">
-															<label for="email">Email <span class="required">*</span></label> 
-															<input id="email" name="email" type="email" value="" class="form-control" maxlength="245" required='required' />
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group">
-															<label for="phone">Phone <span class="required">*</span></label> 
-															<input id="phone" name="phone" type="text" value="" class="form-control" maxlength="245" required='required' />
-														</div>
-													</div>
-												</div>
-												
-												<div class="row">
-													<div class="col-md-6">
-														<div class="form-group">
-															<label for="photo">Proof of Transaction </label> 
-															<input id="photo" name="file" type="file" class="form-control" required/>
-															<small class="text-muted">You may only upload one document</small>
-														</div>
-													</div>
-													
-												</div>
-									
-												<div class="form-group">
-													<input name="type" type="hidden" id="type" value="foundationschool" /> 
-													<input name="submit" type="submit" id="submit" class="submit" value="Enrol" /> 
-												</div>
-											</form>
-										</div>
-									</div>
-								</div>
-								
-							</div>
-							
+			<div class="row no-gutters">
+				<div class="col-md-5">
+					<div class="card border-0">
+						<div class="card-body text-center">
+							<h1>Find Us</h1>
+							<span class="d-block border border-dark mt-2 mx-5"></span>
+							<p class="my-5">We are available and reachable online via telephone, 
+								email and social network everyday during business hours
+							</p>
 						</div>
 					</div>
-					
+				</div>
+				<div class="col-md-7">
+					<div class=" bg-secondary p-5">
+						<ul class="list-unstyled text-white px-md-5">
+							<li class="py-2">
+								<h3 class="d-flex">
+									<i class="fa fa-envelope"></i>
+									<span class="mx-3">abc@email.com</span>
+								</h3>
+							</li>
+							<li class="py-2">
+								<h3 class="d-flex">
+									<i class="fa fa-phone"></i>
+									<span class="mx-3">08023343434</span>
+								</h3>
+							</li>
+							<li class="py-2">
+								<h3 class="d-flex">
+									<i class="fa fa-whatsapp"></i>
+									<span class="mx-3">904309430943</span>
+								</h3>
+							</li>
+							
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="row no-gutters mt-5">
+				<div class="col-md-8">
+					<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d31705.626239757108!2d3.361083!3d6.621652!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b93b830dcf4e3%3A0x695fda95d3d78e4a!2sAlausa%2C%20Ojodu%2C%20Nigeria!5e0!3m2!1sen!2sus!4v1620337692709!5m2!1sen!2sus" width="800" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 				</div>
 				<div class="col-md-4">
-					
+					<div class="card border-0">
+						<div class="card-body text-center">
+							<h1>Aachen</h1>
+							<span class="d-block border border-dark mt-2 mx-5"></span>
+							<p class="my-5">We are available and reachable online via telephone, 
+								email and social network everyday during business hours
+							</p>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<div class="row no-gutters mt-5">
+				<div class="col-md-5">
+					<div class="card border-0">
+						<div class="card-body text-center">
+							<h1>Social</h1>
+							<span class="d-block border border-dark mt-2 mx-5"></span>
+							<p class="my-5">We are available and reachable online via telephone, 
+								email and social network everyday during business hours
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-7">
+					<div class=" bg-secondary p-5">
+						<ul class="list-inline text-white row text-center p-3">
+							<li class="py-2 col-4">
+								<a href="#" style="text-decoration:none;color:white">
+									<h3><i class="fa fa-facebook"></i></h3>
+									<span class="text-white">CeAachen</span>
+								</a>	
+							</li>
+							<li class="py-2 col-4">
+								<a href="#" style="text-decoration:none;color:white">
+									<h3><i class="fa fa-instagram"></i></h3>
+									<span class="text-white">CeAachen</span>
+								</a>
+							</li>
+							<li class="py-2 col-4">
+								<a href="#" style="text-decoration:none;color:white">
+									<h3><i class="fa fa-youtube"></i></h3>
+									<span class="text-white">CeAachen</span>
+								</a>
+							</li>
+							
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>

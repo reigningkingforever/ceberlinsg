@@ -26,11 +26,14 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function frontend(){
-        $today = Carbon::today();
-        $program = Program::where('event_date','>=',$today)->orderBy('event_date','asc')->first();
+        $today = Carbon::now();
+        $program = Program::where('event_date','>',$today)->orderBy('event_date','asc')->first();
+        // $streaming = Program::whereTime('event_date','<',now())->orderBy('event_date','asc')->first();
+        $streaming = Program::whereDate('event_date',$today)->whereTime('event_date','<',now())->orderBy('event_date','asc')->first();
         $posts = Post::orderBy('created_at','desc')->take(6)->get();
         $testimonies = Testimony::orderBy('created_at','desc')->take(3)->get();
-        return view('frontend.home',compact('program','posts','testimonies'));
+        // dd($streaming);
+        return view('frontend.home',compact('program','posts','testimonies','streaming'));
     }
     public function backend()
     {

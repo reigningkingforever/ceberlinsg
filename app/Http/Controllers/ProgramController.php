@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Program;
+use App\Submission;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,8 +15,10 @@ class ProgramController extends Controller
     use MediaManagementTrait;
     
     public function birthdays()
-    {
-        return view('frontend.events.birthdays');
+    {   
+        $submissions = Submission::has('media')->orderBy('birthday_month','asc')->orderBy('birthday_date','asc')->get()->unique('email');
+        // dd($celebrants);
+        return view('frontend.events.birthdays',compact('submissions'));
     }
     public function services()
     {
@@ -28,6 +31,12 @@ class ProgramController extends Controller
 
     public function show(Program $program){
         return view('frontend.events.view',compact('program'));
+    }
+
+    public function live(){
+        $today = Carbon::today();
+        $program = Program::whereDate('event_date',$today)->whereTime('event_date','<',now())->orderBy('event_date','asc')->first();
+        return view('frontend.live',compact('program'));
     }
 
     /* Backend*/

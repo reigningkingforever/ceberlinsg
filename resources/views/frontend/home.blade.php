@@ -12,7 +12,7 @@
         <div class="left-div where-section">
             <i class="fa fa fa-map-marker"></i>
             <h2>Location</h2>
-            <p>{{$program->city.' '.$program->state}}</p>                        
+            <p>{{$program->city.' , '.$program->state}}</p>                        
         </div>
         <div class="left-div when-section">
             <i class="fa fa fa-calendar"></i>
@@ -80,11 +80,102 @@
                 <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
                     <h2>Subscribe to Our Mailing List</h2>
                     <div class="text-content">
-                        You can receive our excerpts from church services and bible studies to edify you and improve your understanding about God and who you are in Christ Jesus. </div>
-                    <div class="btn-holder"><a href="#" class="button"> Subscribe with Email</a></div>
+                        You can receive our excerpts from church services and bible 
+                        studies to edify you and improve your understanding about God 
+                        and who you are in Christ Jesus. 
+                    </div>
+                    <div class="btn-holder">
+                        <a href="#" class="button" data-toggle="modal" data-target="#subscription"> Subscribe with Email</a>
+                    </div>
                 </div>
             </div>
         </div>
+        
     </div>
 </section>
+<div class="modal fade modal-primary" id="subscription" tabindex="-1" role="dialog" aria-labelledby="subscription" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header justify-content-center">
+                <h3>Subscribe</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <form action="{{route('enrol.save')}}" method="post" enctype="multipart/form-data">@csrf
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="name">Your Name <span class="required">*</span></label> 
+                                                <input id="name" name="name" type="text" value="" class="form-control" maxlength="245" required='required' />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6"><label for="title">Birthday</label>
+                                            <div class="input-group">
+                                                <select id="title" name="birthday_month" type="text" value="" class="form-control w-50" required>
+                                                    <option value="1">January</option>
+                                                    <option value="2">February</option>
+                                                    <option value="3">March</option>
+                                                    <option value="4">April</option>
+                                                    <option value="5">May</option>
+                                                    <option value="6">June</option>
+                                                    <option value="7">July</option>
+                                                    <option value="8">August</option>
+                                                    <option value="9">September</option>
+                                                    <option value="10">October</option>
+                                                    <option value="11">November</option>
+                                                    <option value="12">December</option>
+                                                </select>
+                                                <input name="birthday_date" type="number" size="2" class="form-control w-20" placeholder="day" required> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="email">Email <span class="required">*</span></label> 
+                                                <input id="email" name="email" type="email" value="" class="form-control" maxlength="245" required='required' />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="phone">Phone <span class="required">*</span></label> 
+                                                <input id="phone" name="phone" type="text" value="" class="form-control" maxlength="245" required='required' />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="photo">Your picture </label> 
+                                                <input id="photo" name="file" type="file" class="form-control" required/>
+                                                <small class="text-muted">Please add an image of yourself here</small>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                        
+                                    <div class="form-group d-flex justify-content-center">
+                                        <input name="type" type="hidden" id="type" value="subscription" /> 
+                                        <input name="submit" type="submit" id="submit" class="submit" value="Subscribe" /> 
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer text-center">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+            
+        </div>
+    </div>
+    
+</div>
 @endsection

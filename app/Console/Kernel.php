@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Media;
 use App\Program;
 use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
@@ -29,15 +30,17 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')
         //          ->hourly();
         $schedule->call(function () {
-            // $today = Carbon::today();
-            // $programs = Program::whereDate('event_date',$today->addDays(7) )->get();
-            // if($today->addDays(7));
-            //check todays date and check if 7days time service is in database, if not add it,
-        })->weekly()->wednesdays();
-
-        $schedule->call(function () {
-            //check todays date and check if 7days time service is in database, if not add it.
-        })->weekly()->sundays();
+            $today = Carbon::today();
+            $nextweek = $today->addDays(7);
+            if($today->format('l') == 'Wednesday' || $today->format('l') == 'Sunday' ){
+                $programs = Program::whereDate('event_date',$nextweek )->get();
+                if($programs->isEmpty()){
+                    $program = Program::create(['user_id' => 1,'name' => $today->format('l').' Service'  ,'description' => $today->format('l').' Service','event_date'=> $nextweek]);
+                    $media = Media::create(['name'=> 'service.jpg','format'=> 'image','mediable_id'=> $program->id,'mediable_type'=> 'App\Program']);
+        
+                }
+            }
+        })->daily();
     }
 
     /**

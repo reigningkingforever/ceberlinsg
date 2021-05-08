@@ -106,9 +106,13 @@
                             <h1 class="slider-title">Welcome to LoveWorld</h1>
                             
                             <div class="text-content">
-                                Taking the divine presence of God to the nations of the world                                    </div>
-                                
-                            <div class="btn-holder"><a href="{{route('live')}}" class="button">JOIN LIVE SERVICE</a></div>
+                                Taking the divine presence of God to the nations of the world                                    
+                            </div>
+                            @if(isset($streaming) && $streaming->streaming)
+                            <div class="btn-holder">
+                                <a href="{{route('live')}}" class="button">JOIN LIVE SERVICE <i class="fa fa-play-circle"></i></a>
+                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -123,7 +127,8 @@
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <header class="entry-header">
-                            <h1 class="entry-title">Wish you a Merry Christmas and New Year 2018</h1>				</header><!-- .entry-header -->
+                            <h1 class="entry-title text-center"> Building a Happier World with Love</h1>				
+                        </header><!-- .entry-header -->
                     </div>
                 </div>
             </div>

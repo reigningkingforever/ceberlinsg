@@ -13,42 +13,6 @@
 
 @section('main')
 
-	<div id="breadcrumb" class="wrapper wrap-breadcrumb">
-		<div class="container">
-			<div class="breadcrumb-inner">
-				<div role="navigation" aria-label="Breadcrumbs" class="breadcrumb-trail breadcrumbs" itemprop="breadcrumb">
-					<ul class="trail-items" itemscope itemtype="http://schema.org/BreadcrumbList">
-						<meta name="numberOfItems" content="5" />
-						<meta name="itemListOrder" content="Ascending" />
-						<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="trail-item trail-begin">
-							<a href="https://demo.evisionthemes.com/chrimbo" rel="home">
-								<span itemprop="name">Home</span>
-							</a>
-							<meta itemprop="position" content="1" />
-						</li>
-						<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="trail-item">
-							<a href="https://demo.evisionthemes.com/chrimbo/2017/"><span itemprop="name">2017</span></a>
-							<meta itemprop="position" content="2" />
-						</li>
-						<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="trail-item">
-							<a href="https://demo.evisionthemes.com/chrimbo/2017/12/"><span itemprop="name">December</span></a>
-							<meta itemprop="position" content="3" />
-						</li>
-						<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="trail-item">
-							<a href="https://demo.evisionthemes.com/chrimbo/2017/12/08/">
-								<span itemprop="name">8</span>
-							</a>
-							<meta itemprop="position" content="4" />
-						</li>
-						<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="trail-item trail-end">
-							<span itemprop="name">Wish you a Merry Christmas and New Year 2018</span>
-							<meta itemprop="position" content="5" />
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div><!-- .container-fluid -->
-	</div><!-- #breadcrumb -->
 	<section class="wrapper wrap-content">
 		<div class="site-content">
 			<div class="row">
@@ -77,7 +41,7 @@
 								
 								<div>
 									<span><i class="fa fa-eye"></i>{{$program->views}}</span>
-									<span><i class="fa fa-comment"></i>5</span>
+									<span><i class="fa fa-comment"></i>{{$program->comments->count()}}</span>
 									<span><i class="fa fa-users"></i>5</span>
 								</div>
 								
@@ -87,6 +51,24 @@
 								<p>{{$program->description}}
 								</p>
 							</div>	
+							@if($program->comments->isNotEmpty())
+							<div class="mt-5">
+								<h3 class="mb-4 font-weight-bold">{{$program->comments->count()}} Comment</h3>
+								<ul class="list-unstyled">
+									@foreach ($program->comments as $comment)
+										<span class="d-block border border-dark mt-2"></span>
+										<li class="py-3">
+											<div class="d-flex justify-content-between">
+												<h5 class="d-inline">{{$comment->name}}</h5>
+												<small class="text-muted mb-2">{{$comment->created_at->format('M d, Y -  h:i A')}}</small>
+											</div>
+											{{-- <p class="" style="font-family:'Courier New', Courier, monospace">This is my message. I dont think the children are to blame. I think the government should look into the system of childcare and ensure that every child is properly represented in the community and school system etc. If you like  the rubbish i just posted, then give me some votes</p> --}}
+											<p class="">{{$comment->body}}</p>
+										</li>
+									@endforeach
+								</ul>	
+							</div>
+							@endif
 							<div class="accordions" id="accordion">
 								<div class="card">
 									<button data-target="#collapseOne" href="#" data-toggle="collapse" class="collapsed p-0" aria-expanded="false">
@@ -96,33 +78,44 @@
 									</button>
 									<div id="collapseOne" class="card-collapse collapse" style="">
 										<div class="card-body">
-											<form action="#" method="post">@csrf
-								
+											<form action="{{route('comment.save')}}" method="post">@csrf
+												<input type="hidden" name="type" value="App\Program">
+												<input type="hidden" name="id" value="{{$program->id}}">
 												<div class="form-group">
-													<textarea class="form-control" name="comment" cols="45" rows="8" placeholder="Type comment here" required="required"></textarea>
+													<textarea class="form-control" name="body" cols="45" rows="8" placeholder="Type comment here" required="required"></textarea>
 												</div>
 												<div class="row">
 													<div class="col-md-6">
 														<div class="form-group">
-															<label for="author">Email <span class="required">*</span></label> 
-															<input id="email" name="email" type="email" value="" class="form-control" maxlength="245" required='required' />
+															<label for="name">Name <span class="required">*</span></label> 
+															<input id="name" name="name" type="text" class="form-control" maxlength="245" required='required' />
 														</div>
 													</div>
 													<div class="col-md-6">
 														<div class="form-group">
-															<label for="author">Phone <span class="required">*</span></label> 
+															<label for="phone">Phone <span class="required">*</span></label> 
 															<input id="phone" name="phone" type="text" value="" class="form-control" maxlength="245" required='required' />
 														</div>
 													</div>
 												</div>
+												<div class="row">
+													<div class="col-md-6">
+														<div class="form-group">
+															<label for="email">Email <span class="required">*</span></label> 
+															<input id="email" name="email" type="email" value="" class="form-control" maxlength="245" required='required' />
+														</div>
+													</div>
+													<div class="col-md-6">
+														<div class="form-group mt-5">
+															<input name="consent" type="checkbox" value="1" /> 
+															<label for="consent">Send me contents from this site</label>
+														</div>
+													</div>
+												</div>
+												
 												
 												<div class="form-group">
-													<input name="wp-comment-cookies-consent" type="checkbox" value="yes" /> 
-													<label for="wp-comment-cookies-consent">Send me posts, invites and invites from this site</label>
-												</div>
-												<div class="form-group">
-													<input type='hidden' name='comment_post_ID' value='53' id='comment_post_ID' />
-													<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+					
 													<input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> 
 												</div>
 											</form>

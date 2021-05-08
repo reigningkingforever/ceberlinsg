@@ -6,42 +6,6 @@
 {{-- <body class="post-template-default single single-post postid-53 single-format-standard evision-right-sidebar"> --}}
 @section('main')
 
-	<div id="breadcrumb" class="wrapper wrap-breadcrumb">
-		<div class="container">
-			<div class="breadcrumb-inner">
-				<div role="navigation" aria-label="Breadcrumbs" class="breadcrumb-trail breadcrumbs" itemprop="breadcrumb">
-					<ul class="trail-items" itemscope itemtype="http://schema.org/BreadcrumbList">
-						<meta name="numberOfItems" content="5" />
-						<meta name="itemListOrder" content="Ascending" />
-						<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="trail-item trail-begin">
-							<a href="https://demo.evisionthemes.com/chrimbo" rel="home">
-								<span itemprop="name">Home</span>
-							</a>
-							<meta itemprop="position" content="1" />
-						</li>
-						<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="trail-item">
-							<a href="https://demo.evisionthemes.com/chrimbo/2017/"><span itemprop="name">2017</span></a>
-							<meta itemprop="position" content="2" />
-						</li>
-						<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="trail-item">
-							<a href="https://demo.evisionthemes.com/chrimbo/2017/12/"><span itemprop="name">December</span></a>
-							<meta itemprop="position" content="3" />
-						</li>
-						<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="trail-item">
-							<a href="https://demo.evisionthemes.com/chrimbo/2017/12/08/">
-								<span itemprop="name">8</span>
-							</a>
-							<meta itemprop="position" content="4" />
-						</li>
-						<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="trail-item trail-end">
-							<span itemprop="name">Wish you a Merry Christmas and New Year 2018</span>
-							<meta itemprop="position" content="5" />
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div><!-- .container-fluid -->
-	</div><!-- #breadcrumb -->
 	<section class="wrapper wrap-content">
 		<div class="site-content">
 			<div class="row">
@@ -111,34 +75,7 @@
 													</div>
 												</li>
 											@endforelse
-											{{-- <li style="opacity: 1; height: 100%; transform: scale(1);" class="">
-												<div class="event-card v-card">
-													<div class="row no-gutters">
-														<div class="col-xs-12 col-md-4" style="background: url({{asset('frontend/img/new-years-eve.jpg')}});background-size: cover;background-position: center center;background-repeat: no-repeat;min-height:200px;">
-															<div class="date-ribbon">
-																<h2>Aug</h2> 
-																<h1>28</h1>
-															</div>
-														</div>
-														<div class="d-flex flex-column justify-content-between col-xs-12 col-md-6 pt-2 pl-3" style="max-width: 390px;">
-															<div>
-																<h2 class="name">Scuba Merit Badge</h2> 
-																<h6 class="text-muted">August 28 | 8am - 3pm</h6>
-																<p class="desc">
-																	Earn your scuba diving merit badge. 
-																	Pre-req: Requirement 1a, 2b, 4ab
-																	
-																</p> 
-															</div> 
-															<div class="text-muted pb-1">
-																<i class="fa fa-map-marker"></i>
-																503 Harbor Blvd, Destin, FL
-															</div>
-														</div>
-														
-													</div>
-												</div>
-											</li> --}}
+											
 										</ul>
 										
 									</div>
@@ -154,8 +91,8 @@
 														<div class="row no-gutters">
 															<a href="{{route('services.show',$program)}}" class="col-xs-12 col-md-4" style="background: url({{asset('storage/images/'.$program->media->first()->name)}});background-size: cover;background-position: center center;background-repeat: no-repeat;min-height:200px;">
 																<div class="date-ribbon">
-																	<h2>Aug</h2> 
-																	<h1>28</h1>
+																	<h2>{{$program->event_date->format('M')}}</h2> 
+																	<h1>{{$program->event_date->format('d')}}</h1>
 																</div>
 															</a>
 															<div class="d-flex flex-column justify-content-between col-xs-12 col-md-6 pt-2 pl-3" style="max-width: 390px;">
@@ -196,14 +133,6 @@
 								</div>
 							</div>
 						</div>
-						
-						<!-- Tabs content -->
-						{{-- <button type="button" class="v-btn v-btn--flat" style="align-self: flex-end; color: rgb(158, 158, 158); margin-right: 1.4em;">
-							<div class="v-btn__content">
-								<span style="padding-right: 0.4em;">Filter</span> 
-								<i aria-hidden="true" class="v-icon material-icons">filter_list</i>
-							</div>
-						</button> --}}
 						
 					</div>
 				</div>

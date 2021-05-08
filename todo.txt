@@ -1,37 +1,16 @@
-Home (live services | The Pastor's note | Write ups | Subscribe | Upcoming events)
-Events, 
-    Upcoming services
-    Upcoming birthdays 
-   
-Articles
-    Sermons
-    Share your testimony link
-
-Activities
-    Cells
-    Foundation School
-    Baptism
-    Giving
-    Prayer of Salvation
-
-Gallery..{add share event/add to calendar/view location/get direction/get picked up/ lets know you're coming}
-
+backend
 Broadcast (Email/Sms)
 Download CSV, PDF,
 Print
-
-
-submissions: baptism, foundationschool, subscriptions, salvation, findcell
-
-VIEWS
-
-Birthday list - 
 comments
+
+
+frontend
+
+add live service to sidebar
+scroll birthday images
+
 invite someone
 add date to calendar
 attend event
-breadcrumb
-
-show previous comments in gallery,post,
-
-submissions: foundation
+get direction

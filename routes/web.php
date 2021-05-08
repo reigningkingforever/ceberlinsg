@@ -29,10 +29,14 @@ Route::get('/', 'HomeController@frontend');
                                                 
 Route::get('services','ProgramController@services')->name('services');
 Route::get('services/{program}','ProgramController@show')->name('services.show');
+Route::get('live','ProgramController@live')->name('live');
+
 Route::get('birthdays','ProgramController@birthdays')->name('birthdays');
 
 Route::get('sermons','PostController@index')->name('sermons');
 Route::get('sermons/{post}','PostController@show')->name('article');
+Route::post('comment/save','CommentController@save')->name('comment.save');
+// Route::get('run','CommentController@run')->name('comment.run');
 
 Route::get('testimonies','TestimonyController@index')->name('testimonies');
 Route::get('testimonies/{testimony}','TestimonyController@show')->name('testimonies.show');
@@ -41,6 +45,7 @@ Route::post('testimonies/save','TestimonyController@store')->name('testimonies.s
 Route::get('baptism','SubmissionController@baptism')->name('baptism');
 Route::get('foundation-school','SubmissionController@foundationSchool')->name('foundation.school');
 Route::post('enrol','SubmissionController@store')->name('enrol.save');
+
 
 Route::post('subscribe','SubscriberController@store')->name('subscriber.save');
 
@@ -56,7 +61,7 @@ Route::view('locate-a-cell','frontend.findcell')->name('cell');
 
 Route::view('contact','frontend.contact')->name('contact');
 
-Route::view('live-service','frontend.live')->name('live');
+
 
 Auth::routes();
 include('admin.php');

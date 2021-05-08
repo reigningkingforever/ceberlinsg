@@ -5,22 +5,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Christ Embassy &#8211; Berlin SG</title>
         <link rel='dns-prefetch' href='//fonts.googleapis.com' />
-		
-		
-		{{-- <link rel='stylesheet' id='wp-block-library-css'  href='https://demo.evisionthemes.com/chrimbo/wp-includes/css/dist/block-library/style.min.css?ver=5.7' type='text/css' media='all' /> --}}
 		<link rel='stylesheet' id='contact-form-7-css'  href="{{asset('vendors/contact-form-7/css/styles.css?ver=4.9.2')}}" type='text/css' media='all' />
 		<link rel='stylesheet' id='wow-animate-css-css'  href='{{asset("vendors/wow/css/animate.min.css?ver=3.4.0")}}' type='text/css' media='all' />
 		<link rel='stylesheet' id='slick-css-css'  href='{{asset("vendors/slick/slick.css?ver=3.4.0")}}' type='text/css' media='all' />
 		<link rel='stylesheet' id='chrimbo-style-css'  href="{{asset('frontend/css/style.css?ver=5.7')}}" type='text/css' media='all' />
 		<link rel='stylesheet' id='chrimbo-google-fonts-css' href='https://fonts.googleapis.com/css?family=Oxygen%3A400%2C300%2C700%7CPlayfair%2BDisplay%3A400%2C400i%2C700%2C700i%2C900&#038;ver=5.7' type='text/css' media='all' />
 		<link rel='stylesheet'  href='{{asset("frontend/css/custom.css")}}' type='text/css' />
-		
         <link rel='stylesheet' id='wow-animate-css-css'  href='{{asset("vendors/wow/css/animate.min.css?ver=3.4.0")}}' type='text/css' media='all' />
         <link rel='stylesheet' href='{{asset("backend/css/bootstrap.min.css")}}' type='text/css' media='all' />
         <script type='text/javascript' src="{{asset('vendors/jquery/jquery.min.js?ver=3.5.1')}}" id='jquery-core-js'></script>
 		<script type='text/javascript' src="{{asset('vendors/jquery/jquery-migrate.min.js?ver=3.3.2')}}" id='jquery-migrate-js'></script>
-		{{-- <script type='text/javascript' src="{{asset('backend/jquery/jquery-migrate.min.js?ver=3.3.2')}}" id='jquery-migrate-js'></script> --}}
-        @stack('styles')
+		 @stack('styles')
 </head>
 
 @if(request()->is('/')) 
@@ -127,23 +122,7 @@
     <a id="gotop" class="evision-back-to-top" href="#top">
         <i class="fa fa-angle-up"></i>
     </a>
-{{-- </div><!-- #page --> --}}
-    <!--Start of Tawk.to Script (0.3.3)-->
-    <script type="text/javascript">
-        var Tawk_API=Tawk_API||{};
-        var Tawk_LoadStart=new Date();
-        (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/5a4b062dd7591465c7067794/default';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-        })();
-    </script>
-    <!--End of Tawk.to Script (0.3.3)-->
 
-    {{-- <script type='text/javascript' src='https://demo.evisionthemes.com/chrimbo/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.9.2' id='contact-form-7-js'></script> --}}
     <script type='text/javascript' src='{{asset("backend/js/core/popper.min.js")}}'></script>
     <script type='text/javascript' src='{{asset("backend/js/core/jquery.3.2.1.min.js")}}'></script>
     <script type='text/javascript' src='{{asset("backend/js/core/bootstrap.min.js")}}'></script>
@@ -154,8 +133,6 @@
     <script type='text/javascript' src='{{asset("vendors/slick/slick.min.js?ver=1.6.0")}}' id='slick-js'></script>
     <script type='text/javascript' src='{{asset("vendors/waypoints/jquery.waypoints.min.js?ver=4.0.0")}}' id='waypoints-js'></script>
     <script type='text/javascript' src='{{asset("frontend/js/evision-custom.js?ver=1.0.1")}}' id='evision-custom-js'></script>
-    <script type='text/javascript' src='{{asset("frontend/js/skip-link-focus-fix.js?ver=20130115")}}' id='skip-link-focus-fix-js'></script>
-    {{-- <script type='text/javascript' src='{{asset("frontend/js/wp-embed.min.js?ver=5.7")}}' id='wp-embed-js'></script> --}}
     @stack('scripts')
 </body>
 </html>

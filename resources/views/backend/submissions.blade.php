@@ -78,6 +78,12 @@
                                                     @case('subscription')
                                                         Subscriptions
                                                     @break
+                                                    @case('findcell')
+                                                        Find Cell
+                                                    @break
+                                                    @case('salvation')
+                                                        Salvation
+                                                    @break
                                                     @default
                                                         
                                                 @endswitch

@@ -1,174 +1,203 @@
 @extends('frontend.layouts.app')
+@push('styles')
+	<style>
+		.event-dash-card-icon {
+    font-size: 14px;
+    vertical-align: top;
+	float:right;
+}
+.card-title .day {
+    font-size: 2em;
+	opacity:1.0 !important;
+}
+.card-title small {
+    font-size: 0.75em;
+    text-align: left;
+    float: right;
+    margin-right: 45px;
+    margin-top: 15px;
+}
+.card-text {
+    padding: 0 5px 0 20px;
+}
+.celebrant-thumbs li a img {
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+}
+.todays-celebrant li a img {
+    width: 100%;
+    height: 70px;
+    /* border-radius: 100%; */
+}
+li.extra{
+    max-width: 32px;
+    border-radius: 100%;
+	background-color:gray;
+	padding-right:2px;
+	color:white;
+	font-size: 14px;
+	text-align: center;
+}
+.celebrant{
+	position: relative;
+	display: none;
+	max-height: 270px;
+}
+.date{
+	position: absolute;
+	top:10px;
+	left:10px;
+	padding:10px 18px;;
+	border-radius: 50%;
+	font-weight: 600;
+}
+.celebrant-name{
+	position: absolute;
+	bottom:0px;
+	left:10px;
+	color:white;
+	font-weight: 600;
+}
 
+</style>
+@endpush
 		
 {{-- <body class="post-template-default single single-post postid-53 single-format-standard evision-right-sidebar"> --}}
 @section('main')
 
-	<div id="breadcrumb" class="wrapper wrap-breadcrumb">
-		<div class="container">
-			<div class="breadcrumb-inner">
-				<div role="navigation" aria-label="Breadcrumbs" class="breadcrumb-trail breadcrumbs" itemprop="breadcrumb">
-					<ul class="trail-items" itemscope itemtype="http://schema.org/BreadcrumbList">
-						<meta name="numberOfItems" content="5" />
-						<meta name="itemListOrder" content="Ascending" />
-						<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="trail-item trail-begin">
-							<a href="https://demo.evisionthemes.com/chrimbo" rel="home">
-								<span itemprop="name">Home</span>
-							</a>
-							<meta itemprop="position" content="1" />
-						</li>
-						<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="trail-item">
-							<a href="https://demo.evisionthemes.com/chrimbo/2017/"><span itemprop="name">2017</span></a>
-							<meta itemprop="position" content="2" />
-						</li>
-						<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="trail-item">
-							<a href="https://demo.evisionthemes.com/chrimbo/2017/12/"><span itemprop="name">December</span></a>
-							<meta itemprop="position" content="3" />
-						</li>
-						<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="trail-item">
-							<a href="https://demo.evisionthemes.com/chrimbo/2017/12/08/">
-								<span itemprop="name">8</span>
-							</a>
-							<meta itemprop="position" content="4" />
-						</li>
-						<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="trail-item trail-end">
-							<span itemprop="name">Wish you a Merry Christmas and New Year 2018</span>
-							<meta itemprop="position" content="5" />
-						</li>
-					</ul>
+	<section class="wrapper wrap-content">
+		<div class="site-content">
+			<div class="row">
+				<div class="col-md-9">
+					<div class="row no-gutters">
+						@if($submissions->isNotEmpty())
+							@for ($m = 1; $m <=12; $m++)
+								@for ($d = 1; $d <=31; $d++)
+									@if ($submissions->where('birthday_month',$m)->where('birthday_date',$d)->isNotEmpty())
+											<div class="col-md-4 p-2">
+												<div class="card">
+													<div class="celebrant">
+														<img src="" class="card-img-top">
+														<span class="date bg-primary text-white">{{\Carbon\Carbon::createFromDate(null, $m, $d)->format('M')}} <br>{{$d.date("S", mktime(0, 0, 0, 0, $d, 0))}}</span>
+														<p class="celebrant-name">Idera Oluwadamilola</p>
+													</div>
+													<div class="card-body">
+														<span class="event-dash-card-icon">
+															<i class="fa fa-birthday-cake"></i> 
+														</span>
+														<h1 class="card-title px-4">
+															<span class="day"><i class="fa fa-calendar"></i></span>
+															<small class="text-center">{{$d}}  <br> <span class="font-weight-bold">{{\Carbon\Carbon::createFromDate(null, $m, $d)->format('M')}}</span></small>
+														</h1>
+														<p class="card-text">Birthday Celebrants </p>
+															
+													</div>
+													<div class="card-footer border-0 bg-white  pb-1">
+														<ul class="list-inline row no-gutters celebrant-thumbs">
+															@foreach($submissions->where('birthday_month',$m)->where('birthday_date',$d) as $submission)
+																<li class="col-2">
+																	<a href="#" class="pop"><img src="{{asset('storage/images/'.$submission->media->name)}}" alt="{{$submission->name}}"></a>
+																</li>
+															@endforeach
+															{{-- <li class="col-2 extra bg-dark d-flex flex-column justify-content-center">
+																<a href="#" class="text-white"><span>+99</span></a>
+															</li> --}}
+											
+														</ul>
+													</div>
+												</div>
+											</div>
+										{{-- @endif --}}
+									@endif
+								@endfor
+							@endfor
+						@else
+							<div class="col-12 text-center">
+								<p>No Birthdays</p>
+							</div>
+						@endif	
+					</div>
+				</div>
+				<div class="col-md-3 px-0">
+					<div class="card bg-primary text-white">
+						<div class="card-body">
+							<p class="card-text">New Orleans Jazz &amp; Herritage Festival Herritage Festival</p>
+							<h1 class="card-title">
+								
+								<span class="day">TODAY</span>
+								
+							</h1>
+							
+							<ul class="list-inline row no-gutters todays-celebrant">
+								<li class="col-3 mb-1">
+								  <a href="#"><img src="{{asset('frontend/img/gallery(14).jpg')}}" class="img-thumbnail"></a>
+								</li>
+								<li class="col-3 mb-1">
+									<a href="#"><img src="{{asset('frontend/img/gallery(12).jpg')}}" class="img-thumbnail"></a>
+								</li>
+								<li class="col-3 mb-1">
+									<a href="#"><img src="{{asset('frontend/img/gallery(13).jpg')}}" class="img-thumbnail"></a>
+								</li>
+								<li class="col-3 mb-1">
+									<a href="#"><img src="{{asset('frontend/img/gallery(14).jpg')}}" class="img-thumbnail"></a>
+								</li>
+								<li class="col-3 mb-1">
+									<a href="#"><img src="{{asset('frontend/img/gallery(15).jpg')}}" class="img-thumbnail"></a>
+								</li>
+								<li class="col-3 mb-1">
+									<a href="#"><img src="{{asset('frontend/img/gallery(26).png')}}" class="img-thumbnail"></a>
+								  </li>
+								  <li class="col-3 mb-1 ">
+									  <a href="#"><img src="{{asset('frontend/img/gallery(22).jpg')}}" class="img-thumbnail"></a>
+								  </li>
+								  <li class="col-3 mb-1">
+									  <a href="#"><img src="{{asset('frontend/img/gallery(23).jpg')}}" class="img-thumbnail"></a>
+								  </li>
+								  <li class="col-3 mb-1">
+									  <a href="#"><img src="{{asset('frontend/img/gallery(24).png')}}" class="img-thumbnail"></a>
+								  </li>
+								  <li class="col-3 mb-1">
+									  <a href="#"><img src="{{asset('frontend/img/gallery(25).png')}}" class="img-thumbnail"></a>
+								  </li>
+								  <li class="col-3 mb-1">
+									<a href="#"><img src="{{asset('frontend/img/gallery(11).jpg')}}" class="img-thumbnail"></a>
+								  </li>
+								  <li class="col-3 mb-1">
+									  <a href="#"><img src="{{asset('frontend/img/gallery(2).jpg')}}" class="img-thumbnail"></a>
+								  </li>
+								  <li class="col-3 mb-1">
+									  <a href="#"><img src="{{asset('frontend/img/gallery(3).jpg')}}" class="img-thumbnail"></a>
+								  </li>
+								  <li class="col-3">
+									  <a href="#"><img src="{{asset('frontend/img/gallery(4).jpg')}}" class="img-thumbnail"></a>
+								  </li>
+								  <li class="col-3">
+									  <a href="#"><img src="{{asset('frontend/img/gallery(5).jpg')}}" class="img-thumbnail"></a>
+								  </li>
+
+								
+				
+							  </ul>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div><!-- .container-fluid -->
-	</div><!-- #breadcrumb -->
-	<section class="wrapper wrap-content">
-		<div class="site-content row">
-			<div id="primary" class="content-area ">
-				<main id="main" class="site-main" role="main">
-					<article id="post-53" class="post-53 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
-						<header class="entry-header">
-							<div class="entry-meta">
-								<span class="posted-on">Posted on <a href="https://demo.evisionthemes.com/chrimbo/2017/12/08/marry-christmas-and-happy-new-year/" rel="bookmark"><time class="entry-date published" datetime="2017-12-08T08:46:55+00:00">December 8, 2017</time><time class="updated" datetime="2017-12-12T10:48:43+00:00">December 12, 2017</time></a></span><span class="byline"> by <span class="author vcard"><a class="url fn n" href="https://demo.evisionthemes.com/chrimbo/author/superadmin/">superadmin</a></span></span>		</div><!-- .entry-meta -->
-						</header><!-- .entry-header -->
-						<div class="entry-content">
-							<div class='image-full'>
-								<img width="1280" height="854" src="https://demo.evisionthemes.com/chrimbo/wp-content/uploads/2017/12/box-2953722_1280.jpg" class="attachment-full size-full wp-post-image" alt="" loading="lazy" srcset="https://demo.evisionthemes.com/chrimbo/wp-content/uploads/2017/12/box-2953722_1280.jpg 1280w, https://demo.evisionthemes.com/chrimbo/wp-content/uploads/2017/12/box-2953722_1280-300x200.jpg 300w, https://demo.evisionthemes.com/chrimbo/wp-content/uploads/2017/12/box-2953722_1280-768x512.jpg 768w, https://demo.evisionthemes.com/chrimbo/wp-content/uploads/2017/12/box-2953722_1280-1024x683.jpg 1024w" sizes="(max-width: 1280px) 100vw, 1280px" />
-							</div>		
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at risus at lacus laoreet mollis sed id elit. Integer bibendum lobortis velit, eleifend commodo dui facilisis nec. Aliquam mi sapien, ultrices a ultrices non, sodales ut diam. Fusce semper risus eu magna placerat pulvinar. </p>
-						</div>
-						<!-- .entry-content -->
-
-						<footer class="entry-footer"></footer><!-- .entry-footer -->
-					</article><!-- #post-## -->
-
-
-					<nav class="navigation post-navigation" role="navigation" aria-label="Posts">
-						<h2 class="screen-reader-text">Post navigation</h2>
-							<div class="nav-links"><div class="nav-previous">
-								<a href="https://demo.evisionthemes.com/chrimbo/2017/12/08/welcome-to-chrimbo-theme/" rel="prev">Join Last Year Party</a>
-							</div>
-						</div>
-					</nav>
-					<div id="comments" class="comments-area">
-						<div id="respond" class="comment-respond">
-							<h3 id="reply-title" class="comment-reply-title">Leave a Reply 
-								<small>
-									<a rel="nofollow" id="cancel-comment-reply-link" href="/chrimbo/2017/12/08/marry-christmas-and-happy-new-year/#respond" style="display:none;">Cancel reply</a>
-								</small>
-							</h3>
-							<form action="https://demo.evisionthemes.com/chrimbo/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-								<p class="comment-notes">
-									<span id="email-notes">Your email address will not be published.</span> Required fields are marked 
-									<span class="required">*</span>
-								</p>
-								<p class="comment-form-comment">
-									<label for="comment">Comment</label> 
-									<textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea>
-								</p>
-								<p class="comment-form-author">
-									<label for="author">Name <span class="required">*</span></label> 
-									<input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' />
-								</p>
-								<p class="comment-form-email">
-									<label for="email">Email <span class="required">*</span></label> 
-									<input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" required='required' />
-								</p>
-								<p class="comment-form-url">
-									<label for="url">Website</label> 
-									<input id="url" name="url" type="url" value="" size="30" maxlength="200" />
-								</p>
-								<p class="comment-form-cookies-consent">
-									<input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> 
-									<label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label>
-								</p>
-								<p class="form-submit">
-									<input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> 
-									<input type='hidden' name='comment_post_ID' value='53' id='comment_post_ID' />
-									<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
-								</p>
-							</form>	
-						</div><!-- #respond -->
-						
-					</div><!-- #comments -->
-
-				</main><!-- #main -->
-			</div><!-- #primary -->
-			
-			<aside id="secondary" class="widget-area" role="complementary">
-				<section id="text-2" class="widget widget_text">
-					<h2 class="widget-title">Find Us</h2>			
-					<div class="textwidget">
-						<p><strong>Address</strong><br />
-							123 Main Street<br />
-							New York, NY 10001
-						</p>
-						<p><strong>Hours</strong><br />
-							Monday&mdash;Friday: 9:00AM&ndash;5:00PM<br />
-							Saturday &amp; Sunday: 11:00AM&ndash;3:00PM
-						</p>
-					</div>
-				</section>
-				<section id="search-3" class="widget widget_search">
-					<h2 class="widget-title">Search</h2>
-					<form role="search" method="get" class="search-form" action="https://demo.evisionthemes.com/chrimbo/">
-						<label>
-							<span class="screen-reader-text">Search for:</span>
-							<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
-						</label>
-						<input type="submit" class="search-submit" value="Search" />
-					</form>
-				</section>
-				<section id="text-3" class="widget widget_text">
-					<h2 class="widget-title">Send Santa Gifts</h2>			
-					<div class="textwidget">
-						<p>This may be a good place to introduce yourself and your site or include some credits.</p>
-					</div>
-				</section>
-				<section id="media_image-3" class="widget widget_media_image">
-					<h2 class="widget-title">Coffee Christmas</h2>
-					<a href="http://evisionthemes.com">
-						<img width="300" height="180" src="https://demo.evisionthemes.com/chrimbo/wp-content/uploads/2017/12/coffee-300x180.jpg" class="image wp-image-7  attachment-medium size-medium" alt="" loading="lazy" style="max-width: 100%; height: auto;" srcset="https://demo.evisionthemes.com/chrimbo/wp-content/uploads/2017/12/coffee-300x180.jpg 300w, https://demo.evisionthemes.com/chrimbo/wp-content/uploads/2017/12/coffee-768x461.jpg 768w, https://demo.evisionthemes.com/chrimbo/wp-content/uploads/2017/12/coffee-1024x614.jpg 1024w, https://demo.evisionthemes.com/chrimbo/wp-content/uploads/2017/12/coffee.jpg 2000w" sizes="(max-width: 300px) 100vw, 300px" />
-					</a>
-				</section>
-			</aside><!-- #secondary -->
 		</div>
 	</section>
 @endsection
+@push('scripts')
+	<script>
+		$('.pop').click(function(event){
+			event.preventDefault();
+			$('.card-body').show();
+			// $('.celebrant').slideUp('slow');
+			$('.celebrant').hide();
+			$(this).closest('.card').find('.celebrant img').attr('src',$(this).find('img').attr('src'));
+			$(this).closest('.card').find('.celebrant p').html($(this).find('img').attr('alt'));
+			$(this).closest('.card').find('.card-body').hide();
+			$(this).closest('.card').find('.celebrant').slideDown('slow');
+		});
+	</script>
+@endpush
 		
-		
-<!--End of Tawk.to Script (0.3.3)-->
-{{-- <script type='text/javascript' id='contact-form-7-js-extra'>
- /* <![CDATA[ */
-	var wpcf7 = {"apiSettings":{"root":"https:\/\/demo.evisionthemes.com\/chrimbo\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"},"recaptcha":{"messages":{"empty":"Please verify that you are not a robot."}}};
- /* ]]> */
-</script>
-
-<script type='text/javascript' src='https://demo.evisionthemes.com/chrimbo/wp-content/themes/chrimbo/assets/frameworks/jquery.easing/jquery.easing.js?ver=0.3.6' id='easing-js-js'></script>
-<script type='text/javascript' src='https://demo.evisionthemes.com/chrimbo/wp-content/themes/chrimbo/assets/frameworks/wow/js/wow.min.js?ver=1.1.2' id='wow-js'></script>
-<script type='text/javascript' src='https://demo.evisionthemes.com/chrimbo/wp-content/themes/chrimbo/assets/frameworks/slick/slick.min.js?ver=1.6.0' id='slick-js'></script>
-<script type='text/javascript' src='https://demo.evisionthemes.com/chrimbo/wp-content/themes/chrimbo/assets/frameworks/waypoints/jquery.waypoints.min.js?ver=4.0.0' id='waypoints-js'></script>
-<script type='text/javascript' src='https://demo.evisionthemes.com/chrimbo/wp-content/themes/chrimbo/assets/js/evision-custom.js?ver=1.0.1' id='evision-custom-js'></script>
-<script type='text/javascript' src='https://demo.evisionthemes.com/chrimbo/wp-content/themes/chrimbo/assets/js/skip-link-focus-fix.js?ver=20130115' id='skip-link-focus-fix-js'></script>
-<script type='text/javascript' src='https://demo.evisionthemes.com/chrimbo/wp-includes/js/comment-reply.min.js?ver=5.7' id='comment-reply-js'></script>
-
-</body>
-</html> --}}

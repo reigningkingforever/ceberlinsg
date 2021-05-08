@@ -26,7 +26,17 @@ class SubmissionController extends Controller
 
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        $submission = new Submission;
+        $submission->name = $request->name;
+        $submission->email = $request->email;
+        $submission->phone = $request->phone;
+        $submission->type = $request->type;
+        $submission->birthday_month = $request->birthday_month;
+        $submission->birthday_date = $request->birthday_date;
+        $submission->save();
+        $this->uploadMedia($request,$submission->id,get_class($submission));
+        return redirect()->back();
     }
 
     /**
