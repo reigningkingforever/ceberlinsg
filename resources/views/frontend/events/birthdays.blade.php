@@ -122,63 +122,22 @@ li.extra{
 				<div class="col-md-3 px-0">
 					<div class="card bg-primary text-white">
 						<div class="card-body">
-							<p class="card-text">New Orleans Jazz &amp; Herritage Festival Herritage Festival</p>
-							<h1 class="card-title">
-								
-								<span class="day">TODAY</span>
-								
-							</h1>
 							
-							<ul class="list-inline row no-gutters todays-celebrant">
-								<li class="col-3 mb-1">
-								  <a href="#"><img src="{{asset('frontend/img/gallery(14).jpg')}}" class="img-thumbnail"></a>
-								</li>
-								<li class="col-3 mb-1">
-									<a href="#"><img src="{{asset('frontend/img/gallery(12).jpg')}}" class="img-thumbnail"></a>
-								</li>
-								<li class="col-3 mb-1">
-									<a href="#"><img src="{{asset('frontend/img/gallery(13).jpg')}}" class="img-thumbnail"></a>
-								</li>
-								<li class="col-3 mb-1">
-									<a href="#"><img src="{{asset('frontend/img/gallery(14).jpg')}}" class="img-thumbnail"></a>
-								</li>
-								<li class="col-3 mb-1">
-									<a href="#"><img src="{{asset('frontend/img/gallery(15).jpg')}}" class="img-thumbnail"></a>
-								</li>
-								<li class="col-3 mb-1">
-									<a href="#"><img src="{{asset('frontend/img/gallery(26).png')}}" class="img-thumbnail"></a>
-								  </li>
-								  <li class="col-3 mb-1 ">
-									  <a href="#"><img src="{{asset('frontend/img/gallery(22).jpg')}}" class="img-thumbnail"></a>
-								  </li>
-								  <li class="col-3 mb-1">
-									  <a href="#"><img src="{{asset('frontend/img/gallery(23).jpg')}}" class="img-thumbnail"></a>
-								  </li>
-								  <li class="col-3 mb-1">
-									  <a href="#"><img src="{{asset('frontend/img/gallery(24).png')}}" class="img-thumbnail"></a>
-								  </li>
-								  <li class="col-3 mb-1">
-									  <a href="#"><img src="{{asset('frontend/img/gallery(25).png')}}" class="img-thumbnail"></a>
-								  </li>
-								  <li class="col-3 mb-1">
-									<a href="#"><img src="{{asset('frontend/img/gallery(11).jpg')}}" class="img-thumbnail"></a>
-								  </li>
-								  <li class="col-3 mb-1">
-									  <a href="#"><img src="{{asset('frontend/img/gallery(2).jpg')}}" class="img-thumbnail"></a>
-								  </li>
-								  <li class="col-3 mb-1">
-									  <a href="#"><img src="{{asset('frontend/img/gallery(3).jpg')}}" class="img-thumbnail"></a>
-								  </li>
-								  <li class="col-3">
-									  <a href="#"><img src="{{asset('frontend/img/gallery(4).jpg')}}" class="img-thumbnail"></a>
-								  </li>
-								  <li class="col-3">
-									  <a href="#"><img src="{{asset('frontend/img/gallery(5).jpg')}}" class="img-thumbnail"></a>
-								  </li>
-
-								
-				
-							  </ul>
+							@if($submissions->isNotEmpty() && $submissions->where('birthday_month',now()->format('m'))->where('birthday_date',now()->format('d'))->isNotEmpty())
+							<p class="card-text">Happy Birthday from Pastor Mayowa Idera. <br>Love You So Dearly</p>
+							<h1 class="card-title"><span class="day">TODAY</span></h1>
+								<ul class="list-inline row no-gutters todays-celebrant">
+									@foreach ($submissions->where('birthday_month',now()->format('m'))->where('birthday_date',now()->format('d')) as $celebrant)
+										<li class="col-3 mb-1">
+											<a href="#">
+												<img src="{{asset('storage/images/'.$celebrant->media->name)}}" class="img-thumbnail">
+											</a>
+										</li>
+									@endforeach
+								</ul>
+							@else
+							<h3>No Celebrants</h3>
+							@endif
 						</div>
 					</div>
 				</div>

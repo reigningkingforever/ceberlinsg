@@ -6,10 +6,10 @@ comments
 
 
 frontend
-
-add live service to sidebar
 scroll birthday images
 
+SIDEBAR
+add live service to sidebar
 invite someone
 add date to calendar
 attend event

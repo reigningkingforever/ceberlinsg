@@ -10,7 +10,7 @@
                         <div class="col-md-10" style="padding:10px 0 0;">
                             <div class="site-branding">
                                 <p class="site-title" >
-                                    <a href="#" rel="home">Christ Embassy Berlin</a>
+                                    <a href="#" rel="home">CE @if(Illuminate\Support\Str::contains(url('/'), 'aachen')) Aachen @else Maxvorstadt @endif </a>
                                 </p>
                                 <h2 class="site-description"><i>giving your life a meaning</i></h2>
                             </div>

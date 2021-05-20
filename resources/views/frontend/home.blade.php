@@ -12,7 +12,7 @@
         <div class="left-div where-section">
             <i class="fa fa fa-map-marker"></i>
             <h2>Location</h2>
-            <p>{{$program->city.' , '.$program->state}}</p>                        
+            <p>{{$program->city.' , '.$program->state}} Germany</p>                        
         </div>
         <div class="left-div when-section">
             <i class="fa fa fa-calendar"></i>

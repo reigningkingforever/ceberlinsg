@@ -3,7 +3,7 @@
     <head>
 	    <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Christ Embassy &#8211; Berlin SG</title>
+		<title>Christ Embassy &#8211; @if(Illuminate\Support\Str::contains(url('/'), 'aachen')) Aachen @else Maxvorstadt @endif</title>
         <link rel='dns-prefetch' href='//fonts.googleapis.com' />
 		<link rel='stylesheet' id='contact-form-7-css'  href="{{asset('vendors/contact-form-7/css/styles.css?ver=4.9.2')}}" type='text/css' media='all' />
 		<link rel='stylesheet' id='wow-animate-css-css'  href='{{asset("vendors/wow/css/animate.min.css?ver=3.4.0")}}' type='text/css' media='all' />
