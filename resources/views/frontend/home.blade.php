@@ -1,9 +1,8 @@
 @extends('frontend.layouts.app')
 @section('main')
 
-
+@if($program)
 <section class="wrapper event-section clearfix">
-    @if($program)
     <div class="event-wrapper">
         <div class="left-div what-section">
         <i class="fa fa-question-circle-o"></i>
@@ -20,10 +19,9 @@
             <h2>Event Date</h2>
             <p>{{$program->event_date->format('d F, Y')}}</p>
         </div>
-    </div>
-    @endif
+    </div>   
 </section> 
-
+@endif
 <section class="wrapper about-event-section clearfix">
     <div class="container-wrap">
         <div class="row">
