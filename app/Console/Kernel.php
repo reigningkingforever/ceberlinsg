@@ -32,13 +32,13 @@ class Kernel extends ConsoleKernel
         $schedule->call(function () {
             $today = Carbon::today();
             $nextweek = $today->addDays(7);
-            if($today->format('l') == 'Wednesday' || $today->format('l') == 'Sunday' ){
-                $programs = Program::whereDate('event_date',$nextweek )->get();
-                if($programs->isEmpty()){
-                    $program = Program::create(['user_id' => 1,'name' => $today->format('l').' Service'  ,'description' => $today->format('l').' Service','event_date'=> $nextweek]);
-                    $media = Media::create(['name'=> 'service.jpg','format'=> 'image','mediable_id'=> $program->id,'mediable_type'=> 'App\Program']);
-        
-                }
+            if($today->format('l') == 'Sunday' ){
+                $program = Program::create(['user_id' => 1,'name' => 'Sunday Service'  ,'description' => 'Sunday Service','event_date'=> $nextweek]);
+                $media = Media::create(['name'=> 'service.jpg','format'=> 'image','mediable_id'=> $program->id,'mediable_type'=> 'App\Program']);
+            }
+            if($today->format('l') == 'Wednesday' ){
+                $program = Program::create(['user_id' => 1,'name' => 'Wednesday Service'  ,'description' => 'Wednesday Service','event_date'=> $nextweek]);
+                $media = Media::create(['name'=> 'service.jpg','format'=> 'image','mediable_id'=> $program->id,'mediable_type'=> 'App\Program']);
             }
         })->daily();
     }
