@@ -3,6 +3,7 @@
 
 
 <section class="wrapper event-section clearfix">
+    @if($program)
     <div class="event-wrapper">
         <div class="left-div what-section">
         <i class="fa fa-question-circle-o"></i>
@@ -20,6 +21,7 @@
             <p>{{$program->event_date->format('d F, Y')}}</p>
         </div>
     </div>
+    @endif
 </section> 
 
 <section class="wrapper about-event-section clearfix">
